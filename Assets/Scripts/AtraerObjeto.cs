@@ -9,6 +9,9 @@ public class AtraerObjeto : MonoBehaviour
     public float distanciaMinima = 1f;  // A qué distancia debe parar (1 metro)
 
     private Rigidbody rb;
+    [Header("Modo")]
+
+    public bool repel = false;         // MARCA ESTO PARA ALEJAR EL OBJETO
 
     void Start()
     {
@@ -21,19 +24,51 @@ public class AtraerObjeto : MonoBehaviour
         // 1. Calcular distancia actual
         float distancia = Vector3.Distance(transform.position, player.position);
 
-        // 2. Verificar si está dentro del radio PERO fuera de la distancia mínima
-        if (distancia < radioDeteccion && distancia > distanciaMinima)
+        // 2. Verificar que el objeto esté dentro del área de detección (Radio)
+        if (distancia < radioDeteccion)
         {
-            // Calcular dirección hacia el jugador
-            Vector3 direccion = (player.position - transform.position).normalized;
+            Vector3 direccion;
+            bool debeMoverse = false;
 
-            // Mover usando el Rigidbody
-            // Usamos velocity para que sea un movimiento físico fluido
-            rb.velocity = direccion * velocidad;
+            if (!repel)
+            {
+                // --- MODO ATRAER ---
+                // Calcula dirección HACIA el player
+                direccion = (player.position - transform.position).normalized;
+
+                // Se mueve solo si está lejos (más de 1 metro)
+                if (distancia > distanciaMinima)
+                {
+                    debeMoverse = true;
+                }
+            }
+            else
+            {
+                // --- MODO REPELER ---
+                // Calcula dirección DESDE el player HACIA afuera (invertida)
+                direccion = (transform.position - player.position).normalized;
+
+                // Se mueve solo si está muy cerca (menos de 1 metro)
+                // Esto mantiene el "escudo" de 1 metro
+                if (distancia < distanciaMinima)
+                {
+                    debeMoverse = true;
+                }
+            }
+
+            // 3. Aplicar movimiento
+            if (debeMoverse)
+            {
+                rb.velocity = direccion * velocidad;
+            }
+            else
+            {
+                rb.velocity = Vector3.zero;
+            }
         }
         else
         {
-            // Si está muy lejos o ya llegó a 1 metro, frenamos el movimiento
+            // Si está fuera del radio, frenamos por seguridad
             rb.velocity = Vector3.zero;
         }
     }
