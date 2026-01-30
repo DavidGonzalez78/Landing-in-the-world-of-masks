@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hell_yeah : MonoBehaviour
 {
-    public hola =10;
+    public int lives = 10;
     // Start is called before the first frame update
     void Start()
     {
