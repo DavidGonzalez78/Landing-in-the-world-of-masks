@@ -8,9 +8,11 @@ public class AtraerObjeto : MonoBehaviour
     public float velocidad = 5f;        // Qué tan rápido se acerca
     public float distanciaMinima = 1f;  // A qué distancia debe parar (1 metro)
 
+    [Tooltip("El tag del objeto mascara que tiene que tener activa el player para que se cumpla")]
+    public string tagMascara;
+
     private Rigidbody rb;
     [Header("Modo")]
-
     public bool repel = false;         // MARCA ESTO PARA ALEJAR EL OBJETO
 
     void Start()
@@ -21,10 +23,34 @@ public class AtraerObjeto : MonoBehaviour
 
     void FixedUpdate()
     {
-        // 1. Calcular distancia actual
+        if (player == null) return;
+
+        // --- INICIO SOLUCIÓN ERROR TAG VACÍO ---
+
+        BoxCollider colliderHijo = player.GetComponentInChildren<BoxCollider>();
+        bool tieneElTagCorrecto = false;
+
+        if (colliderHijo != null)
+        {
+            // Verificamos que 'tagMascara' no esté vacío ni sea nulo antes de usarlo
+            if (!string.IsNullOrEmpty(tagMascara))
+            {
+                tieneElTagCorrecto = colliderHijo.CompareTag(tagMascara);
+            }
+            else
+            {
+                // Si el campo está vacío en el inspector, avisamos en consola y no movemos nada
+               // Debug.LogWarning("El campo 'Tag Mascara' está vacío. El objeto no se moverá.");
+            }
+        }
+
+        // Si no tiene el tag correcto (o si el campo estaba vacío), salimos
+        if (!tieneElTagCorrecto) { return; }
+
+        // --- FIN SOLUCIÓN ---
+
         float distancia = Vector3.Distance(transform.position, player.position);
 
-        // 2. Verificar que el objeto esté dentro del área de detección (Radio)
         if (distancia < radioDeteccion)
         {
             Vector3 direccion;
@@ -32,11 +58,7 @@ public class AtraerObjeto : MonoBehaviour
 
             if (!repel)
             {
-                // --- MODO ATRAER ---
-                // Calcula dirección HACIA el player
                 direccion = (player.position - transform.position).normalized;
-
-                // Se mueve solo si está lejos (más de 1 metro)
                 if (distancia > distanciaMinima)
                 {
                     debeMoverse = true;
@@ -44,19 +66,13 @@ public class AtraerObjeto : MonoBehaviour
             }
             else
             {
-                // --- MODO REPELER ---
-                // Calcula dirección DESDE el player HACIA afuera (invertida)
                 direccion = (transform.position - player.position).normalized;
-
-                // Se mueve solo si está muy cerca (menos de 1 metro)
-                // Esto mantiene el "escudo" de 1 metro
                 if (distancia < distanciaMinima)
                 {
                     debeMoverse = true;
                 }
             }
 
-            // 3. Aplicar movimiento
             if (debeMoverse)
             {
                 rb.velocity = direccion * velocidad;
@@ -68,12 +84,9 @@ public class AtraerObjeto : MonoBehaviour
         }
         else
         {
-            // Si está fuera del radio, frenamos por seguridad
             rb.velocity = Vector3.zero;
         }
     }
-
-    // Para ver el área de detección en el Editor (Gizmo)
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
