@@ -8,7 +8,7 @@ public class TriggerMascaraActivar : MonoBehaviour
    
     private void Start()
     {
-        mascaraPlayer = FindAnyObjectByType<MascaraCambio>();
+        mascaraPlayer = GameObject.Find("Player").GetComponent<MascaraCambio>();
     }
 
     private void OnTriggerEnter(Collider other)

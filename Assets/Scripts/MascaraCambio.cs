@@ -13,18 +13,22 @@ public class MascaraCambio : MonoBehaviour
 
     public void MascaraRecogida1()
     {
+        Debug.Log("Mascara recogida 1");
         heCogidoLaMascara1 = true;
     }
     public void MascaraRecogida2()
     {
+        Debug.Log("Mascara recogida 2");
         heCogidoLaMascara2 = true;
     }
     public void MascaraRecogida3()
     {
+        Debug.Log("Mascara recogida 3");
         heCogidoLaMascara3 = true;
     }
     public void MascaraRecogida4()
     {
+        Debug.Log("Mascara recogida 4");
         heCogidoLaMascara4 = true;
     }
     void ActivarMascara()
