@@ -13,7 +13,7 @@ public class TriggerMascaraActivar : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") || other.CompareTag("Mascara01") || other.CompareTag("Mascara02") || other.CompareTag("Mascara03") || other.CompareTag("Mascara04"))
         {
             if(mascaraIndice == 1)
             {
