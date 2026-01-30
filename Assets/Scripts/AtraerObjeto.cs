@@ -15,10 +15,13 @@ public class AtraerObjeto : MonoBehaviour
     [Header("Modo")]
     public bool repel = false;         // MARCA ESTO PARA ALEJAR EL OBJETO
 
+    private Animator animator;
+
     void Start()
     {
         player = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void FixedUpdate()
@@ -62,6 +65,8 @@ public class AtraerObjeto : MonoBehaviour
                 if (distancia > distanciaMinima)
                 {
                     debeMoverse = true;
+
+                     if(animator!=null)  animator.SetBool("IsMoving", true);
                 }
             }
             else
@@ -70,6 +75,7 @@ public class AtraerObjeto : MonoBehaviour
                 if (distancia < distanciaMinima)
                 {
                     debeMoverse = true;
+                    if (animator != null) animator.SetBool("IsMoving", true);
                 }
             }
 
@@ -80,11 +86,13 @@ public class AtraerObjeto : MonoBehaviour
             else
             {
                 rb.velocity = Vector3.zero;
+                if (animator != null)  animator.SetBool("IsMoving", false);
             }
         }
         else
         {
             rb.velocity = Vector3.zero;
+            if (animator != null) animator.SetBool("IsMoving", false);
         }
     }
     private void OnDrawGizmosSelected()
