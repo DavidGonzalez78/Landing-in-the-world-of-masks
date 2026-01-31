@@ -17,6 +17,8 @@ public class AtraerObjeto : MonoBehaviour
 
     private Animator animator;
 
+    public bool puedeMoverse = true;
+
     void Start()
     {
         player = GameObject.Find("Player").transform;
@@ -49,7 +51,7 @@ public class AtraerObjeto : MonoBehaviour
         }
 
         // Si NO tiene el tag correcto (se quitó la máscara):
-        if (!tieneElTagCorrecto)
+        if (!tieneElTagCorrecto || puedeMoverse == false)
         {
             // 1. Forzamos al Rigidbody a detenerse inmediatamente
             rb.velocity = Vector3.zero;
