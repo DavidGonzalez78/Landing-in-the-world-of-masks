@@ -4,56 +4,44 @@ using UnityEngine;
 
 public class TriggerActivador : MonoBehaviour
 {
-    public GameObject objetoActivar;
-    public bool desactivar;
 
-    public bool puedeDesactivarYactivar;
+    [Header("Quién activa el trigger")]
+    public GameObject objetoActivador;
+
+
+    [Header("Qué pasa cuando se activa")]
+    public GameObject objetoActivar;
+    public GameObject objetoActivar2;
     public GameObject objetoDesactivar;
     public GameObject objetoDesactivar2;
 
-    public float numeroDeElementosParaActivar = 1;
-    private float nmeroDeElementosActuales = 0;
-
-    public string tagNpcQueTriggerea;
-
     private ActivarTexto texto;
+
+
     private void Start()
     {
         texto = FindAnyObjectByType<ActivarTexto>();
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<Collider>() != null && other.gameObject.CompareTag(tagNpcQueTriggerea) )
-        {
-            nmeroDeElementosActuales++;
-            Debug.Log(nmeroDeElementosActuales + " de " + numeroDeElementosParaActivar);
-            if(nmeroDeElementosActuales >= numeroDeElementosParaActivar)
-            {
-                if(desactivar)
-                {
-                     objetoActivar.SetActive(false);
-                } 
-                else if(puedeDesactivarYactivar)
-                {
-                    objetoDesactivar.SetActive(false);
-                    objetoActivar.SetActive(true);
-                    objetoDesactivar2.SetActive(false);
+        if (other.gameObject != objetoActivador) return;
 
-                    if(texto != null)
-                    {
-                        texto.CambiarTexto(" Objetivo conseguido Máscara!");
-                    }
-                }
-                else
-                {
-                    objetoActivar.SetActive(true);
-                }
-                
-            }
-        }
+        ActivarTrigger();
     }
-    private void OnTriggerExit(Collider other)
+
+    private void ActivarTrigger()
     {
-        nmeroDeElementosActuales--;
+        Debug.Log("Trigger activado por " + objetoActivador.name);
+
+
+        objetoActivar.SetActive(true);
+        objetoActivar2.SetActive(true);
+        objetoDesactivar.SetActive(false);
+        objetoDesactivar2.SetActive(false);
+
+
+        if (texto != null)
+            texto.CambiarTexto("Objetivo conseguido: Máscara");
     }
 }
