@@ -241,6 +241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texto: {fileID: 773836633}
   uIDialogo: {fileID: 2035137809}
+  tiempoActivo: 7
+  textoDialogo: "Bienveido M\xE1scara!"
   activarPanelTexto: 0
 --- !u!1001 &81746831
 PrefabInstance:

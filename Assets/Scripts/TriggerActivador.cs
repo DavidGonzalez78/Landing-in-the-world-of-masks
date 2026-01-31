@@ -15,6 +15,12 @@ public class TriggerActivador : MonoBehaviour
     private float nmeroDeElementosActuales = 0;
 
     public string tagNpcQueTriggerea;
+
+    private ActivarTexto texto;
+    private void Start()
+    {
+        texto = FindAnyObjectByType<ActivarTexto>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Collider>() != null && other.gameObject.CompareTag(tagNpcQueTriggerea) )
@@ -32,6 +38,11 @@ public class TriggerActivador : MonoBehaviour
                     objetoDesactivar.SetActive(false);
                     objetoActivar.SetActive(true);
                     objetoDesactivar2.SetActive(false);
+
+                    if(texto != null)
+                    {
+                        texto.CambiarTexto(" Objetivo conseguido Máscara!");
+                    }
                 }
                 else
                 {
