@@ -1309,15 +1309,15 @@ ParticleSystem:
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 0.8501502, b: 0, a: 1}
-        key1: {r: 1, g: 0.953032, b: 0.35534585, a: 0}
-        key2: {r: 0.7610961, g: 1, b: 0, a: 0}
+        key1: {r: 0.83761144, g: 1, b: 0.35686278, a: 0}
+        key2: {r: 0.3087892, g: 0.8018868, b: 0.11851779, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
-        ctime1: 15744
+        ctime1: 15613
         ctime2: 65535
         ctime3: 0
         ctime4: 0
@@ -4852,7 +4852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89a6db28842a4de4e94e8e7ddd26c37a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.2926626
+      value: 3.01
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89a6db28842a4de4e94e8e7ddd26c37a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4860,7 +4860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89a6db28842a4de4e94e8e7ddd26c37a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.8092532
+      value: 3.17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 89a6db28842a4de4e94e8e7ddd26c37a, type: 3}
       propertyPath: m_LocalRotation.w
