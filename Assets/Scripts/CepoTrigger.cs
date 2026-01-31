@@ -12,7 +12,7 @@ public class CepoTrigger : MonoBehaviour
         {
             atraerObjeto = other.GetComponent<AtraerObjeto>();
             atraerObjeto.velocidad = 0;
-            atraerObjeto.GetComponentInChildren<Animator>().SetBool("IsMoving", false);
+            atraerObjeto.puedeMoverse = false;
         }
     }
 }
