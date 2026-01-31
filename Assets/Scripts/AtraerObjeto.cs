@@ -11,6 +11,10 @@ public class AtraerObjeto : MonoBehaviour
     [Tooltip("El tag del objeto mascara que tiene que tener activa el player para que se cumpla")]
     public string tagMascara;
 
+    [Tooltip("SI necesitamos que haya mas de una mascara a perseguir, activar el check")]
+    public bool tiene2Mascaras;
+    public string tagMascara2;
+
     private Rigidbody rb;
     [Header("Modo")]
     public bool repel = false;         // MARCA ESTO PARA ALEJAR EL OBJETO
@@ -34,14 +38,21 @@ public class AtraerObjeto : MonoBehaviour
         // --- INICIO SOLUCIÓN ERROR TAG VACÍO ---
 
         BoxCollider colliderHijo = player.GetComponentInChildren<BoxCollider>();
+        BoxCollider colliderHijo2 = player.GetComponentInChildren<BoxCollider>();
         bool tieneElTagCorrecto = false;
+        bool tieneElTagCorrecto2 = false;
 
         if (colliderHijo != null)
         {
             // Verificamos que 'tagMascara' no esté vacío ni sea nulo antes de usarlo
-            if (!string.IsNullOrEmpty(tagMascara))
+            if (!string.IsNullOrEmpty(tagMascara) )
             {
                 tieneElTagCorrecto = colliderHijo.CompareTag(tagMascara);
+                
+            }
+            else if ((!string.IsNullOrEmpty(tagMascara2) && tiene2Mascaras == true))
+            {
+                tieneElTagCorrecto2 = colliderHijo2.CompareTag(tagMascara2);
             }
             else
             {
@@ -51,7 +62,7 @@ public class AtraerObjeto : MonoBehaviour
         }
 
         // Si NO tiene el tag correcto (se quitó la máscara):
-        if (!tieneElTagCorrecto || puedeMoverse == false)
+        if (!tieneElTagCorrecto || puedeMoverse == false || !tieneElTagCorrecto2)
         {
             // 1. Forzamos al Rigidbody a detenerse inmediatamente
             rb.velocity = Vector3.zero;
