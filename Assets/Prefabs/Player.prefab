@@ -4981,6 +4981,20 @@ MonoBehaviour:
   heCogidoLaMascara2: 0
   heCogidoLaMascara3: 0
   heCogidoLaMascara4: 0
+  imagenMascara1Seleccionada: {fileID: 0}
+  imagenMascara1Activa: {fileID: 0}
+  imagenMascara1Desactivada: {fileID: 0}
+  imagenMascara2Seleccionada: {fileID: 0}
+  imagenMascara2Activa: {fileID: 0}
+  imagenMascara2Desactivada: {fileID: 0}
+  imagenMascara3Seleccionada: {fileID: 0}
+  imagenMascara3Activa: {fileID: 0}
+  imagenMascara3Desactivada: {fileID: 0}
+  imagenMascara4Seleccionada: {fileID: 0}
+  imagenMascara4Activa: {fileID: 0}
+  imagenMascara4Desactivada: {fileID: 0}
+  colorSeleccionado: {r: 1, g: 0.7839799, b: 0, a: 1}
+  colorDefault: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
 --- !u!54 &8938052023298708302
 Rigidbody:
   m_ObjectHideFlags: 0
