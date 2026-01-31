@@ -1,45 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ImageFade : MonoBehaviour
+public class FadeSencillo : MonoBehaviour
 {
-    private Image fadeImage;
-    public float fadeSpeed = 1.5f;
-    public bool sceneStarting = true;
-    public bool inversoFade;
+    public Image fadeImage; // Arrastra tu imagen aquí en el inspector
+    public float velocidad = 1.5f;
 
-    private void Start()
+    void Start()
     {
-        fadeImage = GetComponent<Image>(); 
-    }
-    void Update()
-    {
-        if (sceneStarting && !inversoFade)
-        {
-            FadeToClear();
-        }
-        if (sceneStarting && inversoFade)
-        {
-            FadeToBlack();
-        }
-
+        // Iniciamos el fade directamente al comenzar
+        StartCoroutine(AparecerImagen());
     }
 
-    void FadeToClear()
+    IEnumerator AparecerImagen()
     {
-        fadeImage.color = Color.Lerp(fadeImage.color, Color.clear, fadeSpeed * Time.deltaTime);
-        if (fadeImage.color.a <= 0.05f)
-        {
-            fadeImage.color = Color.clear;
-            fadeImage.enabled = false;
-            sceneStarting = false;
-        }
-    }
+        // 1. Aseguramos que empiece invisible (Alpha 0)
+        Color colorActual = fadeImage.color;
+        colorActual.a = 0;
+        fadeImage.color = colorActual;
 
-    void FadeToBlack()
-    {
-        fadeImage.color = Color.Lerp(fadeImage.color, Color.black, fadeSpeed * Time.deltaTime);
+        // 2. Mientras el alpha sea menor que 1, seguimos aumentando
+        while (fadeImage.color.a < 1)
+        {
+            // Aumentamos el alpha gradualmente
+            colorActual = fadeImage.color;
+            colorActual.a += velocidad * Time.deltaTime;
+            fadeImage.color = colorActual;
+
+            // Esperamos un frame antes de seguir
+            yield return null;
+        }
+
+        // 3. Forzamos que sea totalmente opaco al final para que quede limpio
+        colorActual.a = 1;
+        fadeImage.color = colorActual;
     }
 }
