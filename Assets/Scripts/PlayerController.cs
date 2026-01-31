@@ -8,9 +8,6 @@ public class PlayerController : MonoBehaviour
     public int mascara_index = 0;
     [SerializeField] private float playerSpeed = 5.0f;
     
-
-
-
     void Start()
     {
         controller = GetComponent<CharacterController>();

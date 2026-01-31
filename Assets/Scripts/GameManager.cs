@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int contadorCapturas;
+    public int contadorMascarasConseguidas;
+    public int contadorNpcs;
+
     void Start()
     {
         
