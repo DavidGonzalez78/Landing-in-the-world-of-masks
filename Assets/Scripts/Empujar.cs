@@ -13,8 +13,6 @@ public class Empujar : MonoBehaviour
 
     private Animator animator;
 
-    public bool puedeMoverse = true;
-
     void Start()
     {
         player = GameObject.Find("Player").transform;
@@ -27,37 +25,17 @@ public class Empujar : MonoBehaviour
     {
         if (player == null) return;
 
-        
-
         float distancia = Vector3.Distance(transform.position, player.position);
+        print(distancia);
 
         if (distancia < radioDeteccion)
         {
-            Vector3 direccion;
-            bool debeMoverse = false;
-
-            direccion = (player.position - transform.position).normalized;
-            if (distancia > distanciaMinima)
-            {
-                debeMoverse = true;
-
-                // if(animator!=null)  animator.SetBool("IsMoving", true);
-            }
-
-            if (debeMoverse)
-            {
-                if (animator != null) animator.SetBool("IsMoving", true);
-                rb.velocity = direccion * velocidad;
-            }
-            else
-            {
-                rb.velocity = Vector3.zero;
-                if (animator != null)  animator.SetBool("IsMoving", false);
-            }
+            Vector3 direccion = (player.transform.position - transform.position).normalized;
+            rb.velocity = direccion * velocidad;
         }
         else
         {
-            rb.velocity = Vector3.zero;
+            rb.velocity = rb.velocity*0.0f;
             if (animator != null) animator.SetBool("IsMoving", false);
         }
     }

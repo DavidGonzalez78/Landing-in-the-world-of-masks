@@ -11,6 +11,7 @@ public class TriggerActivador : MonoBehaviour
 
     [Header("Qué pasa cuando se activa")]
     public GameObject objetoActivar;
+    public GameObject objetoActivar2;
     public GameObject objetoDesactivar;
     public GameObject objetoDesactivar2;
 
@@ -33,14 +34,12 @@ public class TriggerActivador : MonoBehaviour
     {
         Debug.Log("Trigger activado por " + objetoActivador.name);
 
-        if (objetoActivar != null)
-            objetoActivar.SetActive(true);
 
-        if (objetoDesactivar != null)
-            objetoDesactivar.SetActive(false);
+        objetoActivar.SetActive(true);
+        objetoActivar2.SetActive(true);
+        objetoDesactivar.SetActive(false);
+        objetoDesactivar2.SetActive(false);
 
-        if (objetoDesactivar2 != null)
-            objetoDesactivar2.SetActive(false);
 
         if (texto != null)
             texto.CambiarTexto("Objetivo conseguido: Máscara");
