@@ -18,6 +18,7 @@ public class ScriptFelino : MonoBehaviour
     public float velocidad_normal;
     public float velocidad_huyendo;
     public float distanciaMinima;
+    private float distancia; 
 
     public int counter_estado = 0; 
     public Vector3 direction = new Vector3(); 
@@ -46,12 +47,12 @@ public class ScriptFelino : MonoBehaviour
     void Update()
     {
 
-        float distancia = Vector3.Distance(transform.position, player.transform.position);
+        distancia = Vector3.Distance(transform.position, player.transform.position);
         bool player_cerca = (distancia <= radioDeteccion);
         int mascara_index = playerScript.mascara_index;
 
         #region //Establecer el estado correcto
-        if (!player_cerca || mascara_index==1 || mascara_index==0) //Tranquilito -> Quieto o caminando
+        if (!player_cerca || mascara_index==1 || mascara_index==2) //Tranquilito -> Quieto o caminando
         {
             if (counter_estado<=0)
             {
@@ -72,13 +73,19 @@ public class ScriptFelino : MonoBehaviour
             }
         }
 
-        if (player_cerca && mascara_index==2 && estado!=FelinoState.Huyendo) //Eres un jabalí -> Huyen
+        if (player_cerca && mascara_index==3 && estado!=FelinoState.Huyendo) //Eres un jabalí -> Huyen
         {
             estado = FelinoState.Huyendo;
-            counter_estado = 200;
+            counter_estado = 20;
+
+            direction = -(player.transform.position - transform.position).normalized;
+
+            // Girar un poquillo
+            float angle = Random.Range(-50f,50f);
+            direction = Quaternion.Euler(0f,0f,angle) * direction;
         }
 
-        if (player_cerca && mascara_index==3 && estado!=FelinoState.Siguiendo) //Eres un profeta -> Huyen
+        if (player_cerca && mascara_index==4 && estado!=FelinoState.Siguiendo) //Eres un profeta -> Huyen
         {
             estado = FelinoState.Siguiendo;
             counter_estado = 200;
@@ -124,20 +131,26 @@ public class ScriptFelino : MonoBehaviour
 
     void UpdateSiguiendo()
     {
-        SetMoving();
+        
         direction = (player.transform.position - transform.position).normalized;
-        rb.velocity = direction * velocidad_normal;
+
+        if (distancia < distanciaMinima)
+        {
+            rb.velocity = Vector3.zero;
+            animator.SetBool("IsMoving",false);
+        }
+            
+        else
+        {
+            SetMoving();
+            rb.velocity = direction * velocidad_normal;
+        }
+            
     }
 
     void UpdateHuyendo()
     {
         SetMoving();
-        direction = - (player.transform.position - transform.position).normalized;
-
-        // Girar un poquillo
-        float angle = Random.Range(-50f,50f);
-        direction = Quaternion.Euler(0f,0f,angle) * direction;
-
         rb.velocity = direction * velocidad_huyendo;
     }
 
