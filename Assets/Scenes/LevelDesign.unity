@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -745,8 +745,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 341430353}
   anim_speed: 40
-  player: {fileID: 2013905788}
-  distancia_minima_para_hablar: 3
+  player: {fileID: 0}
+  distancia_minima_para_hablar: 0
 --- !u!95 &341430353
 Animator:
   serializedVersion: 5
@@ -9912,11 +9912,6 @@ Transform:
   - {fileID: 1292706332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2013905788 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3270515557396586343, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
-  m_PrefabInstance: {fileID: 521713907}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2035137809 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9012182249367596723, guid: bafc0de7db3a19b4aa50781e6e8d4bb0, type: 3}
