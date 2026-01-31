@@ -45,6 +45,6 @@ public class nave : MonoBehaviour
             text_script.CambiarTexto("El protagonista intenta desatascar la nave, pero es demasiado pesada. Quizás necesitará ayuda para conseguirlo...");
         }
 
-        print(distancia);
+        //print(distancia);
     }
 }
