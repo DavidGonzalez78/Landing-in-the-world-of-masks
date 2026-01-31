@@ -2156,11 +2156,7 @@ MonoBehaviour:
   desactivar: 0
   puedeDesactivarYactivar: 1
   objetoDesactivar: {fileID: 1162046546}
-<<<<<<< Updated upstream
-  objetoDesactivar2: {fileID: 0}
-=======
   objetoDesactivar2: {fileID: 723911648}
->>>>>>> Stashed changes
   numeroDeElementosParaActivar: 1
   tagNpcQueTriggerea: Health
 --- !u!65 &1037350995
