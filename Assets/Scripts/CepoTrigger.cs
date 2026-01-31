@@ -4,7 +4,6 @@ using UnityEngine;
 public class CepoTrigger : MonoBehaviour
 {
     public string nameNpc;
-
     private AtraerObjeto atraerObjeto;
     private void OnTriggerEnter(Collider other)
     {
@@ -13,6 +12,7 @@ public class CepoTrigger : MonoBehaviour
             atraerObjeto = other.GetComponent<AtraerObjeto>();
             atraerObjeto.velocidad = 0;
             atraerObjeto.puedeMoverse = false;
+          
         }
     }
 }

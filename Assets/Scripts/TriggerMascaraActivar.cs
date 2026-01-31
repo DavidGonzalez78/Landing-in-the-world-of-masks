@@ -5,10 +5,11 @@ public class TriggerMascaraActivar : MonoBehaviour
 {
     private MascaraCambio mascaraPlayer;
     public int mascaraIndice;
-   
+    private ActivarTexto texto;
     private void Start()
     {
         mascaraPlayer = GameObject.Find("Player").GetComponent<MascaraCambio>();
+        texto = FindAnyObjectByType<ActivarTexto>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,6 +19,7 @@ public class TriggerMascaraActivar : MonoBehaviour
             if(mascaraIndice == 1)
             {
                 mascaraPlayer.MascaraRecogida1();
+                texto.CambiarTexto("Has adquirido la Máscara! Con esta Máscara podrás ocultar tu identidad alienígena");
             }
             if (mascaraIndice == 2)
             {
@@ -26,6 +28,7 @@ public class TriggerMascaraActivar : MonoBehaviour
                 mascaraPlayer.mascaras[1].gameObject.SetActive(true);
                 mascaraPlayer.mascaras[2].gameObject.SetActive(false);
                 mascaraPlayer.mascaras[3].gameObject.SetActive(false);
+                texto.CambiarTexto("Has adquirido la Máscara del Zorronejo! Con esta Máscara podrás infiltrarte en su tribu!");
             }
             if (mascaraIndice == 3)
             {
@@ -34,6 +37,7 @@ public class TriggerMascaraActivar : MonoBehaviour
                 mascaraPlayer.mascaras[1].gameObject.SetActive(false);
                 mascaraPlayer.mascaras[2].gameObject.SetActive(true);
                 mascaraPlayer.mascaras[3].gameObject.SetActive(false);
+                texto.CambiarTexto("Has adquirido la Máscara del Jabalí! Con esta Máscara podrás asustar al Guardia!");
             }
             if (mascaraIndice == 4)
             {
@@ -42,6 +46,7 @@ public class TriggerMascaraActivar : MonoBehaviour
                 mascaraPlayer.mascaras[1].gameObject.SetActive(false);
                 mascaraPlayer.mascaras[2].gameObject.SetActive(false);
                 mascaraPlayer.mascaras[3].gameObject.SetActive(true);
+                texto.CambiarTexto("Has adquirido la Máscara del Profeta! Con esta Máscara podrás embelesar a los conejos! llévatelos a tu nave");
             }
              gameObject.SetActive(false );
         }
