@@ -43,14 +43,22 @@ public class AtraerObjeto : MonoBehaviour
             else
             {
                 // Si el campo está vacío en el inspector, avisamos en consola y no movemos nada
-               // Debug.LogWarning("El campo 'Tag Mascara' está vacío. El objeto no se moverá.");
+                // Debug.LogWarning("El campo 'Tag Mascara' está vacío. El objeto no se moverá."); 
             }
         }
 
-        // Si no tiene el tag correcto (o si el campo estaba vacío), salimos
-        if (!tieneElTagCorrecto) { return; }
+        // Si NO tiene el tag correcto (se quitó la máscara):
+        if (!tieneElTagCorrecto)
+        {
+            // 1. Forzamos al Rigidbody a detenerse inmediatamente
+            rb.velocity = Vector3.zero;
 
-        // --- FIN SOLUCIÓN ---
+            // 2. Le decimos al animador que deje de caminar
+            if (animator != null) animator.SetBool("IsMoving", false);
+
+            // 3. Salimos de la función
+            return;
+        }
 
         float distancia = Vector3.Distance(transform.position, player.position);
 
@@ -81,6 +89,7 @@ public class AtraerObjeto : MonoBehaviour
 
             if (debeMoverse)
             {
+                if (animator != null) animator.SetBool("IsMoving", true);
                 rb.velocity = direccion * velocidad;
             }
             else
