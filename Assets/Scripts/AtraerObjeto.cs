@@ -35,73 +35,84 @@ public class AtraerObjeto : MonoBehaviour
     {
         if (player == null) return;
 
-        // --- INICIO SOLUCIÓN ERROR TAG VACÍO ---
+        // 1. Obtenemos TODOS los BoxColliders que sean hijos del Player (usando un array)
+        BoxCollider[] collidersHijos = player.GetComponentsInChildren<BoxCollider>();
 
-        BoxCollider colliderHijo = player.GetComponentInChildren<BoxCollider>();
-        BoxCollider colliderHijo2 = player.GetComponentInChildren<BoxCollider>();
-        bool tieneElTagCorrecto = false;
-        bool tieneElTagCorrecto2 = false;
+        // Variables para saber qué máscaras tiene puestas
+        bool tieneMascara1 = false;
+        bool tieneMascara2 = false;
 
-        if (colliderHijo != null)
+        // 2. Recorremos el array para ver qué tags encontramos
+        foreach (BoxCollider col in collidersHijos)
         {
-            // Verificamos que 'tagMascara' no esté vacío ni sea nulo antes de usarlo
-            if (!string.IsNullOrEmpty(tagMascara) )
+            // Comprobamos la Máscara 1
+            if (!string.IsNullOrEmpty(tagMascara) && col.CompareTag(tagMascara))
             {
-                tieneElTagCorrecto = colliderHijo.CompareTag(tagMascara);
-                
+                tieneMascara1 = true;
             }
-            else if ((!string.IsNullOrEmpty(tagMascara2) && tiene2Mascaras == true))
+
+            // Comprobamos la Máscara 2 (Solo si está activada la opción)
+            if (tiene2Mascaras && !string.IsNullOrEmpty(tagMascara2) && col.CompareTag(tagMascara2))
             {
-                tieneElTagCorrecto2 = colliderHijo2.CompareTag(tagMascara2);
+                tieneMascara2 = true;
+            }
+        }
+
+        // 3. Lógica de decisión: ¿Debe moverse?
+        bool debePerseguir = false;
+
+        if (!puedeMoverse)
+        {
+            debePerseguir = false;
+        }
+        else if (tiene2Mascaras)
+        {
+            // Si exige 2 máscaras, necesita tener AMBAS true
+            debePerseguir = tieneMascara1 && tieneMascara2;
+        }
+        else
+        {
+            // Si solo exige 1, solo necesita la primera (o la que no esté vacía)
+            // Nota: Si tagMascara está vacío, permitimos movimiento por defecto (o puedes poner !string.IsNullOrEmpty)
+            if (!string.IsNullOrEmpty(tagMascara))
+            {
+                debePerseguir = tieneMascara1;
             }
             else
             {
-                // Si el campo está vacío en el inspector, avisamos en consola y no movemos nada
-                // Debug.LogWarning("El campo 'Tag Mascara' está vacío. El objeto no se moverá."); 
+                // Si no hay tag definido, permitimos que se mueva (comportamiento por defecto anterior)
+                debePerseguir = true;
             }
         }
 
-        // Si NO tiene el tag correcto (se quitó la máscara):
-        if (!tieneElTagCorrecto || puedeMoverse == false || !tieneElTagCorrecto2)
+        // 4. Aplicamos la decisión
+        if (!debePerseguir)
         {
-            // 1. Forzamos al Rigidbody a detenerse inmediatamente
             rb.velocity = Vector3.zero;
-
-            // 2. Le decimos al animador que deje de caminar
             if (animator != null) animator.SetBool("IsMoving", false);
-
-            // 3. Salimos de la función
             return;
         }
 
+        // --- AQUI VA EL RESTO DE TU CÓDIGO DE MOVIMIENTO (SIN CAMBIOS) ---
         float distancia = Vector3.Distance(transform.position, player.position);
 
         if (distancia < radioDeteccion)
         {
             Vector3 direccion;
-            bool debeMoverse = false;
+            bool seMueveFisicamente = false;
 
             if (!repel)
             {
                 direccion = (player.position - transform.position).normalized;
-                if (distancia > distanciaMinima)
-                {
-                    debeMoverse = true;
-
-                    // if(animator!=null)  animator.SetBool("IsMoving", true);
-                }
+                if (distancia > distanciaMinima) seMueveFisicamente = true;
             }
             else
             {
                 direccion = (transform.position - player.position).normalized;
-                if (distancia < distanciaMinima)
-                {
-                    debeMoverse = true;
-                    //if (animator != null) animator.SetBool("IsMoving", true);
-                }
+                if (distancia < distanciaMinima) seMueveFisicamente = true;
             }
 
-            if (debeMoverse)
+            if (seMueveFisicamente)
             {
                 if (animator != null) animator.SetBool("IsMoving", true);
                 rb.velocity = direccion * velocidad;
@@ -109,7 +120,7 @@ public class AtraerObjeto : MonoBehaviour
             else
             {
                 rb.velocity = Vector3.zero;
-                if (animator != null)  animator.SetBool("IsMoving", false);
+                if (animator != null) animator.SetBool("IsMoving", false);
             }
         }
         else
