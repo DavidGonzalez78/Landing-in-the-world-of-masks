@@ -26,7 +26,6 @@ public class Empujar : MonoBehaviour
         if (player == null) return;
 
         float distancia = Vector3.Distance(transform.position, player.position);
-        print(distancia);
 
         if (distancia < radioDeteccion)
         {
