@@ -8,6 +8,8 @@ TagManager:
   - Mascara02
   - Mascara03
   - Mascara04
+  - Zorro
+  - Health
   layers:
   - Default
   - TransparentFX
