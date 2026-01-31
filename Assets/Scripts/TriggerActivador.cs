@@ -9,6 +9,7 @@ public class TriggerActivador : MonoBehaviour
 
     public bool puedeDesactivarYactivar;
     public GameObject objetoDesactivar;
+    public GameObject objetoDesactivar2;
 
     public float numeroDeElementosParaActivar = 1;
     private float nmeroDeElementosActuales = 0;
@@ -30,6 +31,7 @@ public class TriggerActivador : MonoBehaviour
                 {
                     objetoDesactivar.SetActive(false);
                     objetoActivar.SetActive(true);
+                    objetoDesactivar2.SetActive(false);
                 }
                 else
                 {
