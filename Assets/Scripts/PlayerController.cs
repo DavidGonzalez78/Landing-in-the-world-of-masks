@@ -1,4 +1,5 @@
 
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -6,7 +7,10 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     public int mascara_index = 0;
+    public GameObject particulasStun;
     [SerializeField] private float playerSpeed = 5.0f;
+
+    private bool isStun;
     
     void Start()
     {
@@ -25,7 +29,27 @@ public class PlayerController : MonoBehaviour
             transform.forward = move;
         }
         // Final movement
-        Vector3 finalMove = (move * playerSpeed) + (playerVelocity.y * Vector3.up);
-        controller.Move(finalMove * Time.deltaTime);
+
+        if(!isStun)
+        {   
+            Vector3 finalMove = (move * playerSpeed) + (playerVelocity.y * Vector3.up);
+            controller.Move(finalMove * Time.deltaTime);
+        }
+    }
+
+    public void StunPlayer()
+    {
+        isStun = true;
+        controller.Move(Vector3.zero);
+        particulasStun.GetComponent<ParticleSystem>().Play();
+        StartCoroutine(TiempoStun(4));
+
+    }
+
+    private IEnumerator TiempoStun(float time)
+    {
+        yield return new WaitForSeconds(time);
+        particulasStun.GetComponent<ParticleSystem>().Stop();
+        isStun=false;
     }
 }
