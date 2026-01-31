@@ -74,7 +74,7 @@ public class AtraerObjeto : MonoBehaviour
                 {
                     debeMoverse = true;
 
-                     if(animator!=null)  animator.SetBool("IsMoving", true);
+                    // if(animator!=null)  animator.SetBool("IsMoving", true);
                 }
             }
             else
@@ -83,7 +83,7 @@ public class AtraerObjeto : MonoBehaviour
                 if (distancia < distanciaMinima)
                 {
                     debeMoverse = true;
-                    if (animator != null) animator.SetBool("IsMoving", true);
+                    //if (animator != null) animator.SetBool("IsMoving", true);
                 }
             }
 
