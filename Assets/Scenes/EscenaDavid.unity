@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -649,7 +649,7 @@ MonoBehaviour:
   radioDeteccion: 10
   velocidad: 3
   distanciaMinima: 10
-  tagMascara: Mascara01
+  tagMascara: 
   repel: 1
 --- !u!65 &795582811
 BoxCollider:
@@ -1317,7 +1317,7 @@ Transform:
   m_GameObject: {fileID: 1252658369}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25766414, y: -0.009439677, z: -0.011597623, w: 0.9661188}
-  m_LocalPosition: {x: -4.89, y: -0.549, z: -2.59}
+  m_LocalPosition: {x: 0, y: -0.549, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1594,7 +1594,7 @@ Transform:
   m_GameObject: {fileID: 1403807477}
   serializedVersion: 2
   m_LocalRotation: {x: 0.25766414, y: -0.009439677, z: -0.011597623, w: 0.9661188}
-  m_LocalPosition: {x: -22.98, y: -0.62, z: -17.02}
+  m_LocalPosition: {x: 0, y: -0.62, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []

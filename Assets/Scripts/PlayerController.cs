@@ -2,10 +2,15 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
+{   
     private CharacterController controller;
     private Vector3 playerVelocity;
+    public int mascara_index = 0;
     [SerializeField] private float playerSpeed = 5.0f;
+    
+
+
+
     void Start()
     {
         controller = GetComponent<CharacterController>();

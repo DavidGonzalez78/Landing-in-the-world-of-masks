@@ -24,6 +24,7 @@ public class AtraerObjeto : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
     }
 
+
     void FixedUpdate()
     {
         if (player == null) return;
