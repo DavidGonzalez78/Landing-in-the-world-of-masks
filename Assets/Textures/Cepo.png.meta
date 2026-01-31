@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1b4b3c832dca5ce4eb2681defde5be5f
+guid: bb3221ef18dca844bb330fd7000ff713
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mask_0
+      name: Cepo_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11d1d2594b68c9e4abf4aa680743828b
-      internalID: -1029990445
+      spriteID: e1e786b618c224140bd81272e50e7cb3
+      internalID: 789424305
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mask_1
+      name: Cepo_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c6ad003a1642bb46a6bf147ed175dd1
-      internalID: -1102048211
+      spriteID: c11f33fd587d80e48b128b1f39512cb3
+      internalID: -1325327078
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mask_2
+      name: Cepo_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2570864b4e80164890c8e7f24eeefed
-      internalID: 1997755951
+      spriteID: 6eda130699202d94a9e1d3d175cf016e
+      internalID: 434392650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Mask_3
+      name: Cepo_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,29 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16532c389989f3043b69e55109eb4108
-      internalID: 1330369275
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Mask_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 73b2977ecfc7e6942af65c2acedc8aae
-      internalID: -909933767
+      spriteID: 92fc59ae2149a8046a5ae7fbc831db77
+      internalID: -1799480875
       vertices: []
       indices: 
       edges: []
@@ -217,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 2ab8e9ab8bce1ae4191e9255c7a6560a
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -225,11 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Mask_0: -1029990445
-      Mask_1: -1102048211
-      Mask_2: 1997755951
-      Mask_3: 1330369275
-      Mask_4: -909933767
+      Cepo_0: 789424305
+      Cepo_1: -1325327078
+      Cepo_2: 434392650
+      Cepo_3: -1799480875
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

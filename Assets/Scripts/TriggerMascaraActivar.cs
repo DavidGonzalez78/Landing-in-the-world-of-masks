@@ -43,8 +43,8 @@ public class TriggerMascaraActivar : MonoBehaviour
                 mascaraPlayer.mascaras[2].gameObject.SetActive(false);
                 mascaraPlayer.mascaras[3].gameObject.SetActive(true);
             }
+             gameObject.SetActive(false );
         }
-       gameObject.SetActive(false );
     }
 
 }
