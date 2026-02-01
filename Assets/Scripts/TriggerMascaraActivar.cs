@@ -13,7 +13,6 @@ public class TriggerMascaraActivar : MonoBehaviour
         
         mascaraPlayer = GameObject.Find("Player").GetComponent<MascaraCambio>();
         texto = FindAnyObjectByType<ActivarTexto>();
-        AudioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
