@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AtraerObjeto : MonoBehaviour
@@ -8,12 +9,8 @@ public class AtraerObjeto : MonoBehaviour
     public float velocidad = 5f;        // Qué tan rápido se acerca
     public float distanciaMinima = 1f;  // A qué distancia debe parar (1 metro)
 
-    [Tooltip("El tag del objeto mascara que tiene que tener activa el player para que se cumpla")]
-    public string tagMascara;
-
-    [Tooltip("SI necesitamos que haya mas de una mascara a perseguir, activar el check")]
-    public bool tiene2Mascaras;
-    public string tagMascara2;
+    [Tooltip("Lista de tags válidos. Si el Player tiene AL MENOS UNO de estos tags, el objeto reaccionará.")]
+    public List<string> tagsMascaras = new List<string>();
 
     private Rigidbody rb;
     [Header("Modo")]
@@ -37,52 +34,30 @@ public class AtraerObjeto : MonoBehaviour
 
         // 1. Obtenemos TODOS los BoxColliders que sean hijos del Player (usando un array)
         BoxCollider[] collidersHijos = player.GetComponentsInChildren<BoxCollider>();
+        bool tieneMascaraValida = false;
 
-        // Variables para saber qué máscaras tiene puestas
-        bool tieneMascara1 = false;
-        bool tieneMascara2 = false;
-
-        // 2. Recorremos el array para ver qué tags encontramos
-        foreach (BoxCollider col in collidersHijos)
+        if (tagsMascaras.Count == 0)
         {
-            // Comprobamos la Máscara 1
-            if (!string.IsNullOrEmpty(tagMascara) && col.CompareTag(tagMascara))
+            tieneMascaraValida = true;
+        }
+        else
+        {
+            foreach (BoxCollider col in collidersHijos)
             {
-                tieneMascara1 = true;
-            }
-
-            // Comprobamos la Máscara 2 (Solo si está activada la opción)
-            if (tiene2Mascaras && !string.IsNullOrEmpty(tagMascara2) && col.CompareTag(tagMascara2))
-            {
-                tieneMascara2 = true;
+                // Comprobamos si este collider tiene ALGÚN tag de nuestra lista
+                if (tagsMascaras.Contains(col.tag))
+                {
+                    tieneMascaraValida = true;
+                    break; // Encontramos uno, no hace falta seguir buscando en este collider
+                }
             }
         }
-
-        // 3. Lógica de decisión: ¿Debe moverse?
-        bool debePerseguir = false;
+        // 3. Lógica de decisión: Debe moverse?
+        bool debePerseguir = puedeMoverse && tieneMascaraValida;
 
         if (!puedeMoverse)
         {
             debePerseguir = false;
-        }
-        else if (tiene2Mascaras)
-        {
-            // Si exige 2 máscaras, necesita tener AMBAS true
-            debePerseguir = tieneMascara1 && tieneMascara2;
-        }
-        else
-        {
-            // Si solo exige 1, solo necesita la primera (o la que no esté vacía)
-            // Nota: Si tagMascara está vacío, permitimos movimiento por defecto (o puedes poner !string.IsNullOrEmpty)
-            if (!string.IsNullOrEmpty(tagMascara))
-            {
-                debePerseguir = tieneMascara1;
-            }
-            else
-            {
-                // Si no hay tag definido, permitimos que se mueva (comportamiento por defecto anterior)
-                debePerseguir = true;
-            }
         }
 
         // 4. Aplicamos la decisión
@@ -93,7 +68,7 @@ public class AtraerObjeto : MonoBehaviour
             return;
         }
 
-        // --- AQUI VA EL RESTO DE TU CÓDIGO DE MOVIMIENTO (SIN CAMBIOS) ---
+ 
         float distancia = Vector3.Distance(transform.position, player.position);
 
         if (distancia < radioDeteccion)
