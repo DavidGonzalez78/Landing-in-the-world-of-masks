@@ -4,32 +4,28 @@ using UnityEngine;
 
 public class ScriptFelino : MonoBehaviour
 {
-
-    public enum FelinoState {Quieto, Paseando, Huyendo, Siguiendo}
+    public enum FelinoState { Quieto, Paseando, Huyendo, Siguiendo }
     public FelinoState estado = FelinoState.Quieto;
 
     private Animator animator;
-    private GameObject player; 
-    private PlayerController playerScript; 
+    private GameObject player;
+    private PlayerController playerScript;
     private Rigidbody rb;
-    private SpriteRenderer spriteRenderer; 
+    private SpriteRenderer spriteRenderer;
 
-    public float radioDeteccion;
-    public float velocidad_normal;
-    public float velocidad_huyendo;
-    public float distanciaMinima;
-    private float distancia; 
+    [Header("Configuración de Movimiento")]
+    public float radioDeteccion = 5f;
+    public float velocidad_normal = 2f;
+    public float velocidad_huyendo = 5f;
+    public float distanciaMinima = 1.5f;
 
-    public int counter_estado = 0; 
-    public Vector3 direction = new Vector3(); 
+    [Header("Tiempos de Reacción (en segundos)")]
+    public float tiempoReaccion = 0.8f; // Cuánto tiempo se queda congelado con el frame especial
 
-    public int min_random_pasear = 50;
-    public int max_random_pasear = 100;
-    public int min_random_quieto = 50;
-    public int max_random_quieto = 100;
-
-
-
+    private float timerEstado = 0;
+    private float timerReaccion = 0; // Temporizador para el frame estático
+    private Vector3 direction = Vector3.zero;
+    private float distancia;
 
 
     void Start()
@@ -39,140 +35,183 @@ public class ScriptFelino : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        
     }
-
-
 
     void Update()
     {
-
         distancia = Vector3.Distance(transform.position, player.transform.position);
         bool player_cerca = (distancia <= radioDeteccion);
         int mascara_index = playerScript.mascara_index;
 
-        #region //Establecer el estado correcto
-        if (!player_cerca || mascara_index==1 || mascara_index==2) //Tranquilito -> Quieto o caminando
+        #region Lógica de Estados
+
+        // 1. SI ESTÁ CERCA EL JABALÍ (Mascara 3)
+        if (player_cerca && mascara_index == 3)
         {
-            if (counter_estado<=0)
+            if (estado != FelinoState.Huyendo)
             {
-                //Estado quieto
-                if (Random.Range(1, 10) <=6)
-                {
-                    estado = FelinoState.Quieto;
-                    counter_estado = Random.Range(min_random_quieto, max_random_quieto);
-                }
-                
-                //Estado paseando
-                else
-                {
-                    estado = FelinoState.Paseando;
-                    counter_estado = Random.Range(min_random_pasear, max_random_pasear);
-                    direction = new Vector3(Random.Range(-1f,1f),0f,Random.Range(-1f,1f)).normalized;
-                }
+                EntrarEnNuevoEstado(FelinoState.Huyendo);
             }
         }
-
-        if (player_cerca && mascara_index==3 && estado!=FelinoState.Huyendo) //Eres un jabalí -> Huyen
+        // 2. SI ESTÁ CERCA EL PROFETA (Mascara 4)
+        else if (player_cerca && mascara_index == 4)
         {
-            estado = FelinoState.Huyendo;
-            counter_estado = 20;
-
-            direction = -(player.transform.position - transform.position).normalized;
-
-            // Girar un poquillo
-            float angle = Random.Range(-50f,50f);
-            direction = Quaternion.Euler(0f,0f,angle) * direction;
+            if (estado != FelinoState.Siguiendo)
+            {
+                EntrarEnNuevoEstado(FelinoState.Siguiendo);
+            }
         }
-
-        if (player_cerca && mascara_index==4 && estado!=FelinoState.Siguiendo) //Eres un profeta -> Huyen
+        // 3. ESTADO NORMAL (Tranquilo)
+        else
         {
-            estado = FelinoState.Siguiendo;
-            counter_estado = 200;
+            // Solo si no estamos ya en un estado de "alerta" o si el player se alejó
+            if (estado == FelinoState.Huyendo || estado == FelinoState.Siguiendo)
+            {
+                estado = FelinoState.Quieto; // Volver a la normalidad
+            }
+
+            timerEstado -= Time.deltaTime;
+            if (timerEstado <= 0)
+            {
+                DecidirComportamientoTranquilo();
+            }
         }
-
-        counter_estado -= 1; 
-
-
         #endregion
 
+        EjecutarEstado();
+    }
 
+    // Esta función centraliza el cambio de estado para activar el "congelamiento"
+    void EntrarEnNuevoEstado(FelinoState nuevo)
+    {
+        estado = nuevo;
+        timerReaccion = tiempoReaccion; // Iniciamos el contador de "susto"
+        if (nuevo != FelinoState.Paseando) 
+            rb.velocity = Vector3.zero;    // Se detiene en seco
+
+        // Calcular dirección inicial de huida si es necesario
+        if (nuevo == FelinoState.Huyendo)
+        {
+            direction = -(player.transform.position - transform.position).normalized;
+            float angle = Random.Range(-30f,30f);
+            direction = Quaternion.Euler(0,0,angle) * direction;
+        }
+    }
+
+    void DecidirComportamientoTranquilo()
+    {
+        if (Random.Range(0,10) < 6)
+        {
+            estado = FelinoState.Quieto;
+            timerEstado = Random.Range(2f,4f);
+        }
+        else
+        {
+            estado = FelinoState.Paseando;
+            timerEstado = Random.Range(2f,4f);
+            direction = new Vector3(Random.Range(-1f,1f),0,Random.Range(-1f,1f)).normalized;
+        }
+    }
+
+    void EjecutarEstado()
+    {
+        // Reducir el timer de reacción (el tiempo que se queda quieto asustado)
+        if (timerReaccion > 0)
+        {
+            timerReaccion -= Time.deltaTime;
+            // Mientras reacciona, forzamos animación especial y velocidad 0
+            rb.velocity = Vector3.zero;
+            ActualizarAnimaciones(true); // true significa "está en reacción"
+            return;
+        }
+
+        ActualizarAnimaciones(false);
 
         switch (estado)
         {
             case FelinoState.Quieto:
-                UpdateQuieto(); break;
+                rb.velocity = Vector3.zero;
+                break;
 
             case FelinoState.Paseando:
-                UpdatePaseando(); break;
+                rb.velocity = direction * velocidad_normal;
+                FlipSprite(rb.velocity.x);
+                animator.SetBool("IsMoving", true); 
+                break;
 
             case FelinoState.Huyendo:
-                UpdateHuyendo(); break;
+                
+                FlipSprite(rb.velocity.x);
+
+                if (timerReaccion > 0)
+                {
+                    animator.SetBool("IsMoving",false);
+                    animator.SetBool("asustado", true);
+                    rb.velocity = Vector3.zero; 
+                }
+                   
+                else
+                {
+                    timerReaccion = 0;
+                    animator.SetBool("IsMoving",true);
+                    rb.velocity = direction * velocidad_huyendo;
+                }
+
+                break;
 
             case FelinoState.Siguiendo:
-                UpdateSiguiendo(); break;
+                direction = (player.transform.position - transform.position).normalized;
+                if (distancia > distanciaMinima)
+                {
+                    FlipSprite(rb.velocity.x);
 
+                    if (timerReaccion > 0)
+                    {
+                        animator.SetBool("IsMoving",false);
+                        animator.SetBool("asombrado",true);
+                        rb.velocity = Vector3.zero;
+                    }
+
+                    else
+                    {
+                        timerReaccion = 0;
+                        animator.SetBool("IsMoving",true);
+                        rb.velocity = direction * velocidad_normal;
+                    }
+
+                }
+                else
+                {
+                    rb.velocity = Vector3.zero;
+                }
+                break;
         }
-
-
     }
 
-    void UpdateQuieto()
+    void ActualizarAnimaciones(bool reaccionando)
     {
-        animator.SetBool("IsMoving", false);
-        rb.velocity = new Vector3 (0, 0, 0);
+        // Control de Bools del Animator
+        animator.SetBool("asustado",(estado == FelinoState.Huyendo && reaccionando));
+        animator.SetBool("asombrado",(estado == FelinoState.Siguiendo && reaccionando));
+
+        // Solo camina si tiene velocidad y NO está en el frame de reacción
+        bool moviendose = rb.velocity.magnitude > 0.1f && !reaccionando;
+        animator.SetBool("IsMoving",moviendose);
     }
 
-    void UpdatePaseando()
+    void FlipSprite(float xInput)
     {
-        SetMoving();
-        rb.velocity = direction * velocidad_normal;
-    }
-
-    void UpdateSiguiendo()
-    {
-        
-        direction = (player.transform.position - transform.position).normalized;
-
-        if (distancia < distanciaMinima)
+        if (Mathf.Abs(xInput) > 0.05f)
         {
-            rb.velocity = Vector3.zero;
-            animator.SetBool("IsMoving",false);
+            spriteRenderer.flipX = (xInput < 0);
         }
-            
-        else
-        {
-            SetMoving();
-            rb.velocity = direction * velocidad_normal;
-        }
-            
     }
-
-    void UpdateHuyendo()
-    {
-        SetMoving();
-        rb.velocity = direction * velocidad_huyendo;
-    }
-
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position,radioDeteccion);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position,distanciaMinima);
     }
-
-
-    private void SetMoving()
-    {
-        animator.SetBool("IsMoving",true);
-
-        if (rb.velocity.x > 0.01f)
-            spriteRenderer.flipX = false;
-        else if (rb.velocity.x < -0.01f)
-            spriteRenderer.flipX = true;
-    }
-
 }

@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Zorronejo_0
+      name: Alien_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d618f75c0c206c4f9bcafed5bb4eaed
-      internalID: 383660501
+      spriteID: d9c1a45f0cf71e446a0bae65d6eb9cb0
+      internalID: -513760374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zorronejo_1
+      name: Alien_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8e0e7bd559a9a54984290e01f3cbec3
-      internalID: -236737040
+      spriteID: e44acdb4f05c1b541bb85a1d200c6c20
+      internalID: 1267757446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zorronejo_2
+      name: Alien_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c25bc6effe7d18e47b11837f0ba0a37e
-      internalID: -776561616
+      spriteID: e16b180703eda234b8852fa9d07e31e1
+      internalID: -1475443780
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Zorronejo_3
+      name: Alien_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,113 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64408f23c0124b84099f6f3ea996b5af
-      internalID: -1175479528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zorronejo_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 890a41dbbc701d146bf4a006a039093f
-      internalID: 328432359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zorronejo_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c19c520e7d69c0f45bb78b39866677e2
-      internalID: 255385770
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zorronejo_6
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 32
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ced6527d4c18abf4289a5df16e1c2476
-      internalID: 1166635636
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zorronejo_7
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 0
-        width: 32
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 64856f4c9c15aa44bb4b5e2c620ea1a6
-      internalID: 811648774
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Zorronejo_8
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 32
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b8c3e9a9db235cf469904a65031c7a4d
-      internalID: 2047898460
+      spriteID: add2a10ab078f8748b73834995e038e2
+      internalID: -1497289600
       vertices: []
       indices: 
       edges: []
@@ -309,15 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Zorronejo_0: 383660501
-      Zorronejo_1: -236737040
-      Zorronejo_2: -776561616
-      Zorronejo_3: -1175479528
-      Zorronejo_4: 328432359
-      Zorronejo_5: 255385770
-      Zorronejo_6: 1166635636
-      Zorronejo_7: 811648774
-      Zorronejo_8: 2047898460
+      Alien_0: -513760374
+      Alien_1: 1267757446
+      Alien_2: -1475443780
+      Alien_3: -1497289600
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
