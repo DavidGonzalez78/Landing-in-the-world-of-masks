@@ -12,13 +12,14 @@ public class AtraerObjeto : MonoBehaviour
     [Tooltip("Lista de tags válidos. Si el Player tiene AL MENOS UNO de estos tags, el objeto reaccionará.")]
     public List<string> tagsMascaras = new List<string>();
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     [Header("Modo")]
     public bool repel = false;         // MARCA ESTO PARA ALEJAR EL OBJETO
 
     private Animator animator;
 
     public bool puedeMoverse = true;
+    public bool moviendose = false;
 
     void Start()
     {
@@ -91,16 +92,19 @@ public class AtraerObjeto : MonoBehaviour
             {
                 if (animator != null) animator.SetBool("IsMoving", true);
                 rb.velocity = direccion * velocidad;
+                moviendose = true;
             }
             else
             {
                 rb.velocity = Vector3.zero;
+                moviendose = false; 
                 if (animator != null) animator.SetBool("IsMoving", false);
             }
         }
         else
         {
             rb.velocity = Vector3.zero;
+            moviendose = false;
             if (animator != null) animator.SetBool("IsMoving", false);
         }
     }
