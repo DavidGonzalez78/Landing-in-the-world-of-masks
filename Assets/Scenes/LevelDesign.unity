@@ -648,6 +648,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1640328641199747339, guid: 2932b6a223570264a8197b9138e7dd95, type: 3}
+      propertyPath: m_Center.x
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640328641199747339, guid: 2932b6a223570264a8197b9138e7dd95, type: 3}
+      propertyPath: m_Center.y
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1640328641199747339, guid: 2932b6a223570264a8197b9138e7dd95, type: 3}
+      propertyPath: m_Center.z
+      value: -0.51
+      objectReference: {fileID: 0}
     - target: {fileID: 4903361934885951412, guid: 2932b6a223570264a8197b9138e7dd95, type: 3}
       propertyPath: m_Name
       value: Cepo-01
@@ -1007,7 +1019,7 @@ PrefabInstance:
       objectReference: {fileID: 182872846}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.31
+      value: -44.19
       objectReference: {fileID: 0}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1015,7 +1027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.36
+      value: 16.17
       objectReference: {fileID: 0}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1045,11 +1057,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5329049604490249718, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
+    - {fileID: 761902518845119583, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
+--- !u!1 &526923081 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1578654228753956744, guid: e1cea360b9702334fa517b6c805a4cb4, type: 3}
+  m_PrefabInstance: {fileID: 832498936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &526923087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526923081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2892f46cb902424ab09755313abf260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagObjetoActivador: Felino
+  objetoActivar: {fileID: 40259469}
+  elementosParaActivar: 3
+  tiempoParaActivar: 3
 --- !u!1001 &611993316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1380,10 +1415,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1490332767}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8248744751987586341, guid: e1cea360b9702334fa517b6c805a4cb4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1578654228753956744, guid: e1cea360b9702334fa517b6c805a4cb4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 526923087}
   m_SourcePrefab: {fileID: 100100000, guid: e1cea360b9702334fa517b6c805a4cb4, type: 3}
 --- !u!4 &864109971 stripped
 Transform:
@@ -1420,6 +1459,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1878656458034133460, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494683997362114457, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      propertyPath: activarPanelTexto
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2541066628879873049, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
@@ -2113,6 +2156,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023405630}
     m_Modifications:
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[0]
+      value: Mascara01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[1]
+      value: Mascara02
+      objectReference: {fileID: 0}
     - target: {fileID: 7798744820039169513, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -39.07
@@ -2160,6 +2215,14 @@ PrefabInstance:
     - target: {fileID: 8528572402324481581, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_TagString
       value: Jabali
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2503,8 +2566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bloqueador: {fileID: 1680222100}
-  player: {fileID: 0}
-  playerController: {fileID: 0}
+  player: {fileID: 1490332767}
+  playerController: {fileID: 1490332770}
   animator: {fileID: 1292706333}
 --- !u!212 &1292706335
 SpriteRenderer:
@@ -2602,6 +2665,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023405630}
     m_Modifications:
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[0]
+      value: Mascara01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[1]
+      value: Mascara02
+      objectReference: {fileID: 0}
     - target: {fileID: 7798744820039169513, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.54
@@ -2650,6 +2725,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Jabali
       objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2663,6 +2746,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023405630}
     m_Modifications:
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[0]
+      value: Mascara01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[1]
+      value: Mascara02
+      objectReference: {fileID: 0}
     - target: {fileID: 7798744820039169513, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -34.17
@@ -2707,6 +2802,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jabali
       objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2742,6 +2845,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3270515557396586343, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
   m_PrefabInstance: {fileID: 521713907}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1490332770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4525999680774462176, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
+  m_PrefabInstance: {fileID: 521713907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490332767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff86ed4959b5d1a44bc99570e3778af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1519527737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4640770706037898205, guid: 601b0387b51eba945bdd788c867edb34, type: 3}
@@ -2822,6 +2936,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023405630}
     m_Modifications:
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[0]
+      value: Mascara01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[1]
+      value: Mascara02
+      objectReference: {fileID: 0}
     - target: {fileID: 7798744820039169513, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.61
@@ -2869,6 +2995,14 @@ PrefabInstance:
     - target: {fileID: 8528572402324481581, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_TagString
       value: Jabali
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3304,6 +3438,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023405630}
     m_Modifications:
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[0]
+      value: Mascara01
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagsMascaras.Array.data[1]
+      value: Mascara02
+      objectReference: {fileID: 0}
     - target: {fileID: 7798744820039169513, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.17
@@ -3351,6 +3497,14 @@ PrefabInstance:
     - target: {fileID: 8528572402324481581, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_TagString
       value: Jabali
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8540747739967734563, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -29,6 +29,7 @@ public class PlacaPresion : MonoBehaviour
     {
         if (!other.gameObject.CompareTag(tagObjetoActivador)) return;
         StartCoroutine(TiempoParaActivar(tiempoParaActivar));
+        triggerActivado = true;
 
     }
     private void OnTriggerExit(Collider other)
