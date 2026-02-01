@@ -914,6 +914,10 @@ PrefabInstance:
       propertyPath: objetoActivar
       value: 
       objectReference: {fileID: 240550525}
+    - target: {fileID: 6831957525240027699, guid: 2932b6a223570264a8197b9138e7dd95, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6949860838947012977, guid: 2932b6a223570264a8197b9138e7dd95, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.48
@@ -970,6 +974,10 @@ PrefabInstance:
     - target: {fileID: 155784294392963965, guid: 22f7973ad0376ad42844ffb6009fc8a8, type: 3}
       propertyPath: m_Name
       value: Mascara03_Pickup
+      objectReference: {fileID: 0}
+    - target: {fileID: 155784294392963965, guid: 22f7973ad0376ad42844ffb6009fc8a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 676283562165598663, guid: 22f7973ad0376ad42844ffb6009fc8a8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1355,7 +1363,7 @@ PrefabInstance:
       objectReference: {fileID: 182872846}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -36.19
+      value: -45.65
       objectReference: {fileID: 0}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1363,7 +1371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.92
+      value: 11.91
       objectReference: {fileID: 0}
     - target: {fileID: 5475221378672207543, guid: 1135a497295b83b449bd8bc59015b2a0, type: 3}
       propertyPath: m_LocalRotation.w
