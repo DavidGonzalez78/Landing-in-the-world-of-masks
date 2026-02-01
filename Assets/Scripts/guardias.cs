@@ -8,12 +8,14 @@ public class guardias : MonoBehaviour
     public GameObject player; 
     public PlayerController playerController;
     public Animator animator;
+    private ActivarTexto activar_texto; 
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         playerController = player.GetComponent<PlayerController>();
+        activar_texto = FindAnyObjectByType<ActivarTexto>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,13 @@ public class guardias : MonoBehaviour
             //Subir las armas
             bloqueador.gameObject.SetActive(true);
             animator.SetBool("Bloqueando", true);
+
+            float distancia = Vector3.Distance(transform.position, player.transform.position);
+
+            if (distancia < 3)
+            {
+                activar_texto.CambiarTexto("No me dejan pasar, no soy de los suyos. ");
+            }
         }
 
     }

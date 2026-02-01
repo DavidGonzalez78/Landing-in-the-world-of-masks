@@ -31,9 +31,6 @@ public class TriggerActivador : MonoBehaviour
 
     private void ActivarTrigger()
     {
-        Debug.Log("Trigger activado por " + objetoActivador.name);
-
-
         objetoActivar.SetActive(true);
         objetoActivar2.SetActive(true);
         objetoDesactivar.SetActive(false);
@@ -41,6 +38,6 @@ public class TriggerActivador : MonoBehaviour
 
 
         if (texto != null)
-            texto.CambiarTexto("Objetivo conseguido: Máscara");
+            texto.CambiarTexto("No parece muy agradecido por mi ayuda. Pero ahora puedo ser como uno de ellos. ");
     }
 }

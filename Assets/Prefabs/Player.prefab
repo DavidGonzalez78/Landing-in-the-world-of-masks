@@ -9953,8 +9953,8 @@ MonoBehaviour:
   imagenMascara4Seleccionada: {fileID: 0}
   imagenMascara4Activa: {fileID: 0}
   imagenMascara4Desactivada: {fileID: 0}
-  colorSeleccionado: {r: 1, g: 0.7839799, b: 0, a: 1}
-  colorDefault: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  colorSeleccionado: {r: 1, g: 1, b: 1, a: 1}
+  colorDefault: {r: 0.2924528, g: 0.2924528, b: 0.2924528, a: 1}
 --- !u!54 &8938052023298708302
 Rigidbody:
   m_ObjectHideFlags: 0
