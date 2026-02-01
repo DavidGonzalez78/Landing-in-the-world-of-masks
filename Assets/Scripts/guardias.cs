@@ -22,7 +22,7 @@ public class guardias : MonoBehaviour
     void Update()
     {
         
-        if (playerController.mascara_index == 2) //Máscara zorroneja
+        if (playerController.mascara_index == 2 || playerController.mascara_index == 4) //Máscara zorroneja
         {
             //Bajar las armas
             bloqueador.gameObject.SetActive(false); 
