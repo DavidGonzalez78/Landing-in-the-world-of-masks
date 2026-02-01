@@ -18,6 +18,8 @@ public class PlacaPresion : MonoBehaviour
 
     public float tiempoParaActivar = 4f;
 
+    private bool triggerActivado = false;
+
     private void Start()
     {
         texto = FindAnyObjectByType<ActivarTexto>();
@@ -36,16 +38,21 @@ public class PlacaPresion : MonoBehaviour
 
     private void ActivarTrigger()
     {
-        elementosActuales++;
-        Debug.Log("Trigger activado por " + tagObjetoActivador + " -> " + elementosActuales);
-
-        if (elementosActuales >= elementosParaActivar)
+        if (!triggerActivado) return;
+        else
         {
-            objetoActivar.SetActive(true);
-        }
+            elementosActuales++;
+            Debug.Log("Trigger activado por " + tagObjetoActivador + " -> " + elementosActuales);
 
-        if (texto != null)
-            texto.CambiarTexto("Objetivo conseguido: Máscara! Nos vemos pronto...");
+            if (elementosActuales >= elementosParaActivar)
+            {
+                objetoActivar.SetActive(true);
+                triggerActivado = true;
+            }
+
+            if (texto != null)
+                texto.CambiarTexto("Objetivo conseguido: Máscara! Nos vemos pronto...");
+        }
     }
 
     private IEnumerator TiempoParaActivar(float time)
