@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 1022364190102357109}
   - component: {fileID: 5088253588262451987}
   - component: {fileID: 6815599411732131268}
-  - component: {fileID: 4992692591565788460}
   - component: {fileID: 6420195961322488156}
+  - component: {fileID: 8540747739967734563}
   m_Layer: 0
   m_Name: Jabali
-  m_TagString: Untagged
+  m_TagString: Jabali
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,30 +115,9 @@ MonoBehaviour:
   radioDeteccion: 10
   velocidad: 5
   distanciaMinima: 1
-  tagMascara: Mascara01
+  tagsMascaras: []
   repel: 0
   puedeMoverse: 1
---- !u!65 &4992692591565788460
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8528572402324481581}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.48, y: 0.32, z: 0.20000002}
-  m_Center: {x: 0, y: 0.16, z: -0.000000009536743}
 --- !u!54 &6420195961322488156
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -166,3 +145,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!135 &8540747739967734563
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8528572402324481581}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.18
+  m_Center: {x: 0, y: 0.16, z: -0.000000009536743}
