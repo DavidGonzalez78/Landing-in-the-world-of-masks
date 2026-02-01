@@ -828,6 +828,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagMascara2
+      value: Mascara02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tiene2Mascaras
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7798744820039169513, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.15
@@ -1978,6 +1986,8 @@ MonoBehaviour:
   velocidad: 3
   distanciaMinima: 2
   tagMascara: Mascara04
+  tiene2Mascaras: 0
+  tagMascara2: 
   repel: 0
   puedeMoverse: 1
 --- !u!65 &956920244
@@ -2988,6 +2998,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tagMascara2
+      value: Mascara02
+      objectReference: {fileID: 0}
+    - target: {fileID: 6815599411732131268, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
+      propertyPath: tiene2Mascaras
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7798744820039169513, guid: d26ae3843f4739a48999eb657ac04ad2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -38.29
@@ -3390,6 +3408,8 @@ MonoBehaviour:
   velocidad: 3
   distanciaMinima: 2
   tagMascara: Mascara02
+  tiene2Mascaras: 0
+  tagMascara2: 
   repel: 0
   puedeMoverse: 1
 --- !u!65 &1484718558
@@ -3773,6 +3793,8 @@ MonoBehaviour:
   velocidad: 3
   distanciaMinima: 2
   tagMascara: Mascara03
+  tiene2Mascaras: 0
+  tagMascara2: 
   repel: 0
   puedeMoverse: 1
 --- !u!65 &1606390814
