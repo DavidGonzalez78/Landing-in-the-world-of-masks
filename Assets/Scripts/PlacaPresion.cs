@@ -39,8 +39,7 @@ public class PlacaPresion : MonoBehaviour
 
     private void ActivarTrigger()
     {
-        if (!triggerActivado) return;
-        else
+    
         {
             elementosActuales++;
             Debug.Log("Trigger activado por " + tagObjetoActivador + " -> " + elementosActuales);
