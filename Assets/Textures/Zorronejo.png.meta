@@ -298,6 +298,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Zorronejo_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e7cc06077400e4a93f784b26f160e6
+      internalID: -1248783224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zorronejo_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb48239783698de4b9faafb4f95a543d
+      internalID: 22729388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -311,6 +353,7 @@ TextureImporter:
     nameFileIdTable:
       Zorronejo_0: 383660501
       Zorronejo_1: -236737040
+      Zorronejo_10: 22729388
       Zorronejo_2: -776561616
       Zorronejo_3: -1175479528
       Zorronejo_4: 328432359
@@ -318,6 +361,7 @@ TextureImporter:
       Zorronejo_6: 1166635636
       Zorronejo_7: 811648774
       Zorronejo_8: 2047898460
+      Zorronejo_9: -1248783224
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

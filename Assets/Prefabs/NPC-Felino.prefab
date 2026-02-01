@@ -258,9 +258,4 @@ MonoBehaviour:
   velocidad_normal: 3
   velocidad_huyendo: 8
   distanciaMinima: 2
-  counter_estado: 0
-  direction: {x: 0, y: 0, z: 0}
-  min_random_pasear: 200
-  max_random_pasear: 300
-  min_random_quieto: 200
-  max_random_quieto: 300
+  tiempoReaccion: 0.4
