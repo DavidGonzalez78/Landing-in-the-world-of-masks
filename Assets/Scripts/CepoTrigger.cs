@@ -5,7 +5,7 @@ public class CepoTrigger : MonoBehaviour
 {
     public string tagNpc;
     private AtraerObjeto atraerObjeto;
-    public AudioSource audioJabali;
+    private AudioSource audioSource;
     
     public Sprite cepoCerrado;
    
@@ -18,7 +18,7 @@ public class CepoTrigger : MonoBehaviour
             atraerObjeto.puedeMoverse = false;
             atraerObjeto.transform.position = transform.position + new Vector3(0, 1, 0);
             GetComponent<SpriteRenderer>().sprite = cepoCerrado;
-            audioJabali.Play();
+            if(audioSource != null) audioSource.Play();
         }
     }
 }
