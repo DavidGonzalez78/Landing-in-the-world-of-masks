@@ -34,7 +34,7 @@ public class PlacaPresion : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        elementosActuales--;
+        //elementosActuales--;
     }
 
     private void ActivarTrigger()

@@ -65,7 +65,7 @@ public class AtraerObjeto : MonoBehaviour
         if (!debePerseguir)
         {
             rb.velocity = Vector3.zero;
-            if (animator != null) animator.SetBool("IsMoving", false);
+            //if (animator != null) animator.SetBool("IsMoving", false);
             return;
         }
 
@@ -90,7 +90,7 @@ public class AtraerObjeto : MonoBehaviour
 
             if (seMueveFisicamente)
             {
-                if (animator != null) animator.SetBool("IsMoving", true);
+                //if (animator != null) animator.SetBool("IsMoving", true);
                 rb.velocity = direccion * velocidad;
                 moviendose = true;
             }
@@ -98,14 +98,14 @@ public class AtraerObjeto : MonoBehaviour
             {
                 rb.velocity = Vector3.zero;
                 moviendose = false; 
-                if (animator != null) animator.SetBool("IsMoving", false);
+                //if (animator != null) animator.SetBool("IsMoving", false);
             }
         }
         else
         {
             rb.velocity = Vector3.zero;
             moviendose = false;
-            if (animator != null) animator.SetBool("IsMoving", false);
+            //if (animator != null) animator.SetBool("IsMoving", false);
         }
     }
     private void OnDrawGizmosSelected()
