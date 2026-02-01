@@ -20,6 +20,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y >= 0)
+        {
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        }
         // Horizontal movement
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         move = Vector3.ClampMagnitude(move, 1f);
