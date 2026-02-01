@@ -27,6 +27,8 @@ public class Felino_pesado : MonoBehaviour
 
     [Header("Referencias Externas")]
     public GameObject blocker;
+    private ActivarTexto activar_texto;
+    
 
     void Start()
     {
@@ -35,6 +37,7 @@ public class Felino_pesado : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        activar_texto = FindAnyObjectByType<ActivarTexto>();
 
         if (blocker != null) blocker.SetActive(true);
     }
@@ -103,11 +106,18 @@ public class Felino_pesado : MonoBehaviour
             case FelinoState.Quieto:
                 rb.velocity = Vector3.zero;
                 // Giro aleatorio ocasional para dar vida
-                if (Random.Range(0,1000) > 995)
+                if (Random.Range(0,1000) > 997)
                 {
                     facing *= -1;
                     FlipSprite(facing);
                 }
+
+                if (distancia < 2)
+                {
+                    activar_texto.CambiarTexto("Hay demasiada gente, no puedo pasar. Están esperando para hacer el ritual.");
+                }
+
+
                 break;
 
             case FelinoState.Huyendo:
@@ -117,6 +127,7 @@ public class Felino_pesado : MonoBehaviour
 
             case FelinoState.Siguiendo:
                 direction = (player.transform.position - transform.position).normalized;
+
                 if (distancia > distanciaMinima)
                 {
                     rb.velocity = direction * velocidad_normal;
