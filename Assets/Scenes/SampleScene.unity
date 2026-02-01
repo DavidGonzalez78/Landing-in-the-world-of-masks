@@ -2963,10 +2963,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7559414658350271773, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
-      propertyPath: tiempoParaDestruir
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 9133954102595451484, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
       propertyPath: m_Camera
       value: 
