@@ -7,9 +7,10 @@ public class TriggerMascaraActivar : MonoBehaviour
     public int mascaraIndice;
     private ActivarTexto texto;
 
-    public AudioSource AudioSource;
+    public AudioSource audioSource;
     private void Start()
     {
+        
         mascaraPlayer = GameObject.Find("Player").GetComponent<MascaraCambio>();
         texto = FindAnyObjectByType<ActivarTexto>();
     }
@@ -22,7 +23,7 @@ public class TriggerMascaraActivar : MonoBehaviour
             {
                 mascaraPlayer.MascaraRecogida1();
                 texto.CambiarTexto("Has adquirido la Máscara! Con esta Máscara podrás ocultar tu identidad alienígena");
-                AudioSource.Play();
+                audioSource.Play();
             }
             if (mascaraIndice == 2)
             {
@@ -32,7 +33,7 @@ public class TriggerMascaraActivar : MonoBehaviour
                 mascaraPlayer.mascaras[2].gameObject.SetActive(false);
                 mascaraPlayer.mascaras[3].gameObject.SetActive(false);
                 texto.CambiarTexto("Has adquirido la Máscara del Zorronejo! Con esta Máscara podrás infiltrarte en su tribu!");
-                AudioSource.Play();
+                audioSource.Play();
             }
             if (mascaraIndice == 3)
             {
@@ -42,7 +43,7 @@ public class TriggerMascaraActivar : MonoBehaviour
                 mascaraPlayer.mascaras[2].gameObject.SetActive(true);
                 mascaraPlayer.mascaras[3].gameObject.SetActive(false);
                 texto.CambiarTexto("Has adquirido la Máscara del Jabalí! Con esta Máscara podrás asustar al Guardia!");
-                AudioSource.Play();
+                audioSource.Play();
             }
             if (mascaraIndice == 4)
             {
@@ -54,7 +55,7 @@ public class TriggerMascaraActivar : MonoBehaviour
                 texto.CambiarTexto("Has adquirido la Máscara del Profeta! Con esta Máscara podrás embelesar a los conejos! llévatelos a tu nave");
             }
              gameObject.SetActive(false );
-            AudioSource.Play();
+            audioSource.Play();
         }
     }
 
