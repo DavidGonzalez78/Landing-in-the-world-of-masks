@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,21 +6,37 @@ public class DeactiveThisObject : MonoBehaviour
 {
     public float tiempoParaDestruir = 3f;
 
+    // 1. Definimos el evento estático para que otros scripts puedan escucharlo.
+    // Usamos 'Action' que es más sencillo que crear un delegate personalizado.
+    public static event Action OnObjectDeactivate;
 
     private void Start()
     {
         StartCoroutine(Desactivacion(tiempoParaDestruir));
     }
+
     private void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Space)) 
+        if (Input.GetKeyUp(KeyCode.Space))
         {
-            gameObject.SetActive(false);
+            TriggerDeactivation();
         }
     }
-    IEnumerator Desactivacion(float tiempoParaDestruir)
+
+    // Método separado para poder llamarlo tanto desde Update como desde el Coroutine
+    private void TriggerDeactivation()
     {
-        yield return new WaitForSeconds(tiempoParaDestruir);
+        // 2. INVOCAR EL EVENTO: Esto avisará a todos los que estén escuchando.
+        // El '?' verifica si hay alguien suscrito antes de invocar para evitar errores.
+        OnObjectDeactivate?.Invoke();
+
+        // 3. Desactivamos el objeto
         gameObject.SetActive(false);
+    }
+
+    IEnumerator Desactivacion(float tiempo)
+    {
+        yield return new WaitForSeconds(tiempo);
+        TriggerDeactivation(); // Llamamos a la lógica que contiene el evento
     }
 }
