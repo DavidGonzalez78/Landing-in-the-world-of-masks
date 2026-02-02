@@ -17,7 +17,7 @@ public class pobrecillo : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float distance = Vector3.Distance(transform.position, player.transform.position); 
 

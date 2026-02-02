@@ -18,12 +18,19 @@ public class EnemyAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && !atraer_objeto.repel)
         {
             other.GetComponent<PlayerController>().StunPlayer();
             atraer_objeto.repel = true;
             StartCoroutine(VolverAAtacar(tiempoParaVolverAAtacar));
-            activar_texto.CambiarTexto("Me han tirado al suelo! ");
+
+            if (Random.Range(0f, 1f) < 0.3)
+                activar_texto.CambiarTexto("Me han empujado al suelo! Qué malos!");
+            else if (Random.Range(0f, 1f) < 0.5)
+                activar_texto.CambiarTexto("Jopetinas, me han empujado! ");
+            else
+                activar_texto.CambiarTexto("Me han dejado tieso!");
+
         }
     }
 

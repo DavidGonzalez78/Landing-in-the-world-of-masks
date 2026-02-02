@@ -14,7 +14,7 @@ public class ActivarTexto : MonoBehaviour
 
     private Coroutine coroutineActivo = null;
 
-    private void Update()
+    private void FixedUpdate()
     {
         // Solo manejamos la activación/desactivación según activarPanelTexto
         if (activarPanelTexto && uIDialogo.activeSelf == false)
@@ -55,6 +55,7 @@ public class ActivarTexto : MonoBehaviour
 
     public void CambiarTexto(string textoNuevo)
     {
+
         // Activamos el panel
         activarPanelTexto = true;
         uIDialogo.SetActive(true);

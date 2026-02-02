@@ -78,7 +78,7 @@ public class ActivarImagenes : MonoBehaviour
             text_script.CambiarTexto("Planeta desconocido. Demasiada radiación solar. No es seguro que me identifiquen, debo ponerme una máscara");
 
         if (identificar == "final")
-            text_script.CambiarTexto("Usuario, muchas gracias por jugar! ");
+            text_script.CambiarTexto("Querido usuario, muchas gracias por jugar! ");
 
         StartCoroutine(Terminar(tiempo));
     }
