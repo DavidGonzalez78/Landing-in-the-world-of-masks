@@ -142,6 +142,7 @@ Transform:
   - {fileID: 7889376285662305063}
   - {fileID: 1327516239207480593}
   - {fileID: 2436911703443400764}
+  - {fileID: 7248471098822062552}
   - {fileID: 7898792227040843988}
   - {fileID: 7559311620684931368}
   - {fileID: 7818151436196910852}
@@ -214,7 +215,6 @@ Transform:
   - {fileID: 1302012404122643695}
   - {fileID: 2206434187063901195}
   - {fileID: 1012494687708573726}
-  - {fileID: 7248471098822062552}
   - {fileID: 3831102189311870270}
   - {fileID: 6089899191956652845}
   - {fileID: 5594157616844156159}
@@ -4630,7 +4630,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8390382682553452215, guid: 5dfe4ba4abdc1ae4993c9c58d970f267, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 35.07
+      value: 34.13
       objectReference: {fileID: 0}
     - target: {fileID: 8390382682553452215, guid: 5dfe4ba4abdc1ae4993c9c58d970f267, type: 3}
       propertyPath: m_LocalRotation.w
