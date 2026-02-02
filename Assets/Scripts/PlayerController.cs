@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public GameObject particulasStun;
     [SerializeField] private float playerSpeed = 5.0f;
 
+    public float stunTime; 
     private bool isStun;
     
     void Start()
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
         isStun = true;
         controller.Move(Vector3.zero);
         particulasStun.GetComponent<ParticleSystem>().Play();
-        StartCoroutine(TiempoStun(4));
+        StartCoroutine(TiempoStun(stunTime));
 
     }
 

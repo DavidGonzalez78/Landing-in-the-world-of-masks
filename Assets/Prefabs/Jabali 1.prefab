@@ -105,6 +105,7 @@ MonoBehaviour:
   sr: {fileID: 4535741140820314747}
   anim: {fileID: 1409855837207136359}
   anim_state: 0
+  tiempoParaVolverAAtacar: 3
 --- !u!114 &367826784624878025
 MonoBehaviour:
   m_ObjectHideFlags: 0

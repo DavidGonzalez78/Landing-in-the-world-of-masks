@@ -14,7 +14,7 @@ public class TriggerMensaje : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) 
         {
-            texto_.CambiarTexto(texto);
+            texto_.CambiarTexto("Me cago en la puta");
         }
     }
 }

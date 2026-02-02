@@ -12,50 +12,60 @@ public class ActivarTexto : MonoBehaviour
 
     public bool activarPanelTexto = false;
 
-    private bool estadoActualActivo = false;
+    private Coroutine coroutineActivo = null;
+
     private void Update()
     {
-        if (activarPanelTexto == true)
+        // Solo manejamos la activación/desactivación según activarPanelTexto
+        if (activarPanelTexto && uIDialogo.activeSelf == false)
         {
             AparecerTexto();
-
         }
-        if (activarPanelTexto == false)
+        else if (!activarPanelTexto && uIDialogo.activeSelf == true)
         {
             OcultarTexto();
         }
     }
+
     public void AparecerTexto()
     {
-        if (activarPanelTexto && estadoActualActivo == false)
-        {
-            uIDialogo.SetActive(true);
-            texto.text = textoDialogo;
-            StartCoroutine(TiempoActivo(tiempoActivo));
-        }
+        // Activamos el panel y ponemos el texto predeterminado
+        uIDialogo.SetActive(true);
+        texto.text = textoDialogo;
+
+        // Si hay una coroutine corriendo, la reiniciamos
+        if (coroutineActivo != null)
+            StopCoroutine(coroutineActivo);
+
+        coroutineActivo = StartCoroutine(TiempoActivo(tiempoActivo));
     }
-    private IEnumerator TiempoActivo(float tiempoActivo)
+
+    private IEnumerator TiempoActivo(float tiempo)
     {
-        estadoActualActivo = true;
-        yield return new WaitForSeconds(tiempoActivo);
+        yield return new WaitForSeconds(tiempo);
         OcultarTexto();
     }
+
     public void OcultarTexto()
     {
-        if (!activarPanelTexto)
-            uIDialogo.SetActive(false);
+        uIDialogo.SetActive(false);
         activarPanelTexto = false;
-        estadoActualActivo = false;
+        coroutineActivo = null;
     }
+
     public void CambiarTexto(string textoNuevo)
     {
+        // Activamos el panel
         activarPanelTexto = true;
+        uIDialogo.SetActive(true);
 
-        if (activarPanelTexto && estadoActualActivo == false)
-        {
-            uIDialogo.SetActive(true);
-            texto.text = textoNuevo;
-            StartCoroutine(TiempoActivo(tiempoActivo));
-        }
+        // Ponemos el nuevo texto
+        texto.text = textoNuevo;
+
+        // Reiniciamos la coroutine si ya estaba corriendo
+        if (coroutineActivo != null)
+            StopCoroutine(coroutineActivo);
+
+        coroutineActivo = StartCoroutine(TiempoActivo(tiempoActivo));
     }
 }

@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,14 @@ public class ScriptFelino : MonoBehaviour
     private float timerReaccion = 0; // Temporizador para el frame estático
     private Vector3 direction = Vector3.zero;
     private float distancia;
+    private float distancia_desfasada; 
+
+    //Esto sirve para que tengan direcciones un poquito diferentes al seguir al player. 
+    public float desfasex = 0; 
+    public float desfasey = 0;
+
+    private GameObject centroGatoso;
+    public float max_distance_centro_gatoso = 40; 
 
 
     void Start()
@@ -35,11 +44,19 @@ public class ScriptFelino : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        float range = 2; 
+        desfasex = Random.Range(-range, range); 
+        desfasey = Random.Range(-range, range);
+
+        centroGatoso = GameObject.FindWithTag("CentroGatoso");
+
     }
 
     void Update()
     {
         distancia = Vector3.Distance(transform.position, player.transform.position);
+        distancia_desfasada = Vector3.Distance(transform.position ,player.transform.position + new Vector3(desfasex,desfasey,0));
         bool player_cerca = (distancia <= radioDeteccion);
         int mascara_index = playerScript.mascara_index;
 
@@ -93,13 +110,15 @@ public class ScriptFelino : MonoBehaviour
         if (nuevo == FelinoState.Huyendo)
         {
             direction = -(player.transform.position - transform.position).normalized;
-            float angle = Random.Range(-30f,30f);
-            direction = Quaternion.Euler(0,0,angle) * direction;
+            float angle = Random.Range(-30f, 30f);
+            direction = Quaternion.Euler(0, 0, angle) * direction;
         }
     }
 
-    void DecidirComportamientoTranquilo()
+    void DecidirComportamientoTranquilo() //Decidir si estará quieto o paseando
     {
+        int mascara_index = playerScript.mascara_index;
+
         if (Random.Range(0,10) < 6)
         {
             estado = FelinoState.Quieto;
@@ -109,7 +128,16 @@ public class ScriptFelino : MonoBehaviour
         {
             estado = FelinoState.Paseando;
             timerEstado = Random.Range(2f,4f);
-            direction = new Vector3(Random.Range(-1f,1f),0,Random.Range(-1f,1f)).normalized;
+            
+            if (Vector3.Distance(transform.position, centroGatoso.transform.position) > max_distance_centro_gatoso && mascara_index!=4)
+            {
+                direction = (centroGatoso.transform.position - transform.position).normalized; //Volver al centro
+            }
+            else
+            {
+                direction = new Vector3(Random.Range(-1f,1f),0,Random.Range(-1f,1f)).normalized;
+            }
+            
         }
     }
 
@@ -160,8 +188,9 @@ public class ScriptFelino : MonoBehaviour
                 break;
 
             case FelinoState.Siguiendo:
-                direction = (player.transform.position - transform.position).normalized;
-                if (distancia > distanciaMinima)
+                
+                direction = (player.transform.position  + new Vector3(desfasex,desfasey,0) - transform.position).normalized;
+                if (distancia_desfasada > distanciaMinima)
                 {
                     FlipSprite(rb.velocity.x);
 

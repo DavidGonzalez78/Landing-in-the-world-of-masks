@@ -259,3 +259,6 @@ MonoBehaviour:
   velocidad_huyendo: 8
   distanciaMinima: 2
   tiempoReaccion: 0.4
+  desfasex: 0
+  desfasey: 0
+  max_distance_centro_gatoso: 20

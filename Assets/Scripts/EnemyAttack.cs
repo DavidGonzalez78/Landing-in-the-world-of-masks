@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
@@ -8,6 +9,7 @@ public class EnemyAttack : MonoBehaviour
     public SpriteRenderer sr; 
     public Animator anim; 
     public int anim_state; 
+    public float tiempoParaVolverAAtacar; 
 
     private void Start()
     {
@@ -19,7 +21,8 @@ public class EnemyAttack : MonoBehaviour
         if(other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<PlayerController>().StunPlayer();
-
+            atraer_objeto.repel = true;
+            StartCoroutine(VolverAAtacar(tiempoParaVolverAAtacar));
             activar_texto.CambiarTexto("Me han tirado al suelo! ");
         }
     }
@@ -47,5 +50,12 @@ public class EnemyAttack : MonoBehaviour
         {
             sr.flipX = (xInput < 0);
         }
+    }
+
+
+    private IEnumerator VolverAAtacar(float time)
+    {
+        yield return new WaitForSeconds(time);
+        atraer_objeto.repel = false; 
     }
 }

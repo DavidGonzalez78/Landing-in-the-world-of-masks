@@ -40,9 +40,11 @@ public class nave : MonoBehaviour
 
         //Decirle al jugador que se busque peña
         float distancia = Vector3.Distance(transform.position, player.transform.position);
-        if (distancia < distancia_minima_para_hablar)
+        int mascara_index = player.GetComponent<PlayerController>().mascara_index;
+
+        if (distancia < distancia_minima_para_hablar && mascara_index!=4)
         {
-            text_script.CambiarTexto("El protagonista intenta desatascar la nave, pero es demasiado pesada. Quizás necesitará ayuda para conseguirlo...");
+            text_script.CambiarTexto("El vehículo está atascado en la tierra, no puedo desatascarlo yo solo");
         }
 
         //print(distancia);

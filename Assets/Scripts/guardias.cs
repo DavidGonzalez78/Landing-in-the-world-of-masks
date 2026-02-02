@@ -36,10 +36,12 @@ public class guardias : MonoBehaviour
 
             float distancia = Vector3.Distance(transform.position, player.transform.position);
 
-            if (distancia < 3)
+            if (distancia < 2.5)
             {
                 activar_texto.CambiarTexto("No me dejan pasar, no soy de los suyos. ");
             }
+
+            
         }
 
     }

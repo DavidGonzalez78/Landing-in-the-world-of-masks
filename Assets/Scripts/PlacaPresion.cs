@@ -18,7 +18,8 @@ public class PlacaPresion : MonoBehaviour
 
     public float tiempoParaActivar = 4f;
 
-    private bool triggerActivado = false;
+    //private bool triggerActivado = false;
+    public string identificar = "";
 
     private void Start()
     {
@@ -29,7 +30,7 @@ public class PlacaPresion : MonoBehaviour
     {
         if (!other.gameObject.CompareTag(tagObjetoActivador)) return;
         StartCoroutine(TiempoParaActivar(tiempoParaActivar));
-        triggerActivado = true;
+        //triggerActivado = true;
 
     }
     private void OnTriggerExit(Collider other)
@@ -47,11 +48,11 @@ public class PlacaPresion : MonoBehaviour
             if (elementosActuales >= elementosParaActivar)
             {
                 objetoActivar.SetActive(true);
-                triggerActivado = true;
+                //triggerActivado = true;
             }
 
-            if (texto != null)
-                texto.CambiarTexto("Objetivo conseguido: Máscara! Nos vemos pronto...");
+            if (texto != null && identificar=="cerdo")
+                texto.CambiarTexto("Pobrecillo. Pero ahora podré ser tan temible como él");
         }
     }
 

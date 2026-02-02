@@ -13,6 +13,7 @@ public class TriggerActivador : MonoBehaviour
     public GameObject objetoActivar2;
     public GameObject objetoDesactivar;
     public GameObject objetoDesactivar2;
+    public string identificar = ""; 
 
     private ActivarTexto texto;
 
@@ -37,7 +38,7 @@ public class TriggerActivador : MonoBehaviour
         objetoDesactivar2.SetActive(false);
 
 
-        if (texto != null)
+        if (texto != null && identificar=="Pobrecito")
             texto.CambiarTexto("No parece muy agradecido por mi ayuda. Pero ahora puedo ser como uno de ellos. ");
     }
 }

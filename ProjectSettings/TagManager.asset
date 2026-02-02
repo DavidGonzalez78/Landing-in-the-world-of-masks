@@ -12,6 +12,7 @@ TagManager:
   - Health
   - Felino
   - Jabali
+  - CentroGatoso
   layers:
   - Default
   - TransparentFX

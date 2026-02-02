@@ -28,7 +28,17 @@ public class Felino_pesado : MonoBehaviour
     [Header("Referencias Externas")]
     public GameObject blocker;
     private ActivarTexto activar_texto;
+
+    private float distancia_desfasada;
+
+    //Esto sirve para que tengan direcciones un poquito diferentes al seguir al player. 
+    public float desfasex = 0;
+    public float desfasey = 0;
+
+    private bool done = false;
+
     
+
 
     void Start()
     {
@@ -40,11 +50,18 @@ public class Felino_pesado : MonoBehaviour
         activar_texto = FindAnyObjectByType<ActivarTexto>();
 
         if (blocker != null) blocker.SetActive(true);
+
+        float range = 2;
+        desfasex = Random.Range(-range,range);
+        desfasey = Random.Range(-range,range);
+
+        
     }
 
     void Update()
     {
         distancia = Vector3.Distance(transform.position,player.transform.position);
+        distancia_desfasada = Vector3.Distance(transform.position,player.transform.position + new Vector3(desfasex,desfasey,0));
         bool player_cerca = (distancia <= radioDeteccion);
         int mascara_index = playerScript.mascara_index;
 
@@ -112,9 +129,9 @@ public class Felino_pesado : MonoBehaviour
                     FlipSprite(facing);
                 }
 
-                if (distancia < 2)
+                if (distancia < 2 && done==false)
                 {
-                    activar_texto.CambiarTexto("Hay demasiada gente, no puedo pasar. Están esperando para hacer el ritual.");
+                    activar_texto.CambiarTexto("Hay demasiada gente, no puedo pasar. Están esperando para hacer un ritual.");
                 }
 
 
@@ -126,12 +143,13 @@ public class Felino_pesado : MonoBehaviour
                 break;
 
             case FelinoState.Siguiendo:
-                direction = (player.transform.position - transform.position).normalized;
+                direction = (player.transform.position + new Vector3(desfasex, desfasey, 0) - transform.position).normalized;
 
-                if (distancia > distanciaMinima)
+                if (distancia_desfasada > distanciaMinima)
                 {
                     rb.velocity = direction * velocidad_normal;
                     FlipSprite(rb.velocity.x);
+                    done = true; 
                 }
                 else
                 {

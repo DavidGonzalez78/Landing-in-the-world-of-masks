@@ -16,8 +16,6 @@ public class AtraerObjeto : MonoBehaviour
     [Header("Modo")]
     public bool repel = false;         // MARCA ESTO PARA ALEJAR EL OBJETO
 
-    private Animator animator;
-
     public bool puedeMoverse = true;
     public bool moviendose = false;
 
@@ -25,7 +23,6 @@ public class AtraerObjeto : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         rb = GetComponent<Rigidbody>();
-        animator = GetComponentInChildren<Animator>();
     }
 
 
@@ -85,7 +82,8 @@ public class AtraerObjeto : MonoBehaviour
             else
             {
                 direccion = (transform.position - player.position).normalized;
-                if (distancia < distanciaMinima) seMueveFisicamente = true;
+                //if (distancia < distanciaMinima) 
+                seMueveFisicamente = true;
             }
 
             if (seMueveFisicamente)
