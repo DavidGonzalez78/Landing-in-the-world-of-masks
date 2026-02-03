@@ -7,3 +7,5 @@ An extraterrestrial being has an accident and crashes its spaceship on an unknow
 
 Made with: Unity, C#, Aseprite, Concepts.
 
+The whole game can also be played online at [itch.io](https://daviddev78.itch.io/aterrizaje-forzoso).
+
