@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
 
         // Horizontal movement
@@ -33,17 +33,17 @@ public class PlayerController : MonoBehaviour
         // Final movement
 
         if(!isStun)
-        {   
-            Vector3 finalMove = (move * playerSpeed) + (playerVelocity.y * Vector3.up);
+        {
+            Vector3 finalMove = move * playerSpeed;
             controller.Move(finalMove * Time.deltaTime);
         }
-        if (transform.position.y != 0f)
+        /*if (transform.position.y != 0f)
         {
             // Es mejor crear un Vector3 nuevo para modificarlo
             Vector3 flatPos = transform.position;
             flatPos.y = 0f;
             transform.position = flatPos;
-        }
+        }*/
     }
 
     public void StunPlayer()
