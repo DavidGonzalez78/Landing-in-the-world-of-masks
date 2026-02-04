@@ -31,7 +31,7 @@ public class DeactiveThisObject : MonoBehaviour
     {
         // 2. INVOCAR EL EVENTO: Esto avisará a todos los que estén escuchando.
         // El '?' verifica si hay alguien suscrito antes de invocar para evitar errores.
-        OnObjectDeactivate?.Invoke();
+        OnObjectDeactivate.Invoke();
 
         // 3. Desactivamos el objeto
         gameObject.SetActive(false);
