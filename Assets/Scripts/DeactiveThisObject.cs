@@ -1,23 +1,26 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DeactiveThisObject : MonoBehaviour
 {
     public float tiempoParaDestruir = 3f;
-
+    private PlayerInput playerInput;
     // 1. Definimos el evento estático para que otros scripts puedan escucharlo.
     // Usamos 'Action' que es más sencillo que crear un delegate personalizado.
     public static event Action OnObjectDeactivate;
 
     private void Start()
     {
+        playerInput = FindAnyObjectByType<PlayerInput>();
         StartCoroutine(Desactivacion(tiempoParaDestruir));
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        //if (Input.GetKeyUp(KeyCode.Space))
+        if (playerInput.actions["Skip"].WasPressedThisFrame())
         {
             TriggerDeactivation();
         }
