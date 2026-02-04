@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MascaraCambio : MonoBehaviour
@@ -6,8 +7,8 @@ public class MascaraCambio : MonoBehaviour
     public GameObject[] mascaras;
 
     public bool heCogidoLaMascara1, heCogidoLaMascara2, heCogidoLaMascara3, heCogidoLaMascara4;
-    private PlayerController playerController;  
-  
+    private PlayerController playerController;
+    private PlayerInput playerInput;
     public GameObject imagenMascara1Seleccionada, imagenMascara1Activa, imagenMascara1Desactivada, imagenMascara2Seleccionada, imagenMascara2Activa, imagenMascara2Desactivada, imagenMascara3Seleccionada, imagenMascara3Activa, imagenMascara3Desactivada, imagenMascara4Seleccionada, imagenMascara4Activa, imagenMascara4Desactivada;
 
     public Color colorSeleccionado;
@@ -15,6 +16,7 @@ public class MascaraCambio : MonoBehaviour
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void Update()
@@ -53,7 +55,8 @@ public class MascaraCambio : MonoBehaviour
     }
     void ActivarMascara()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        //if (Input.GetKeyDown(KeyCode.Alpha1)) 
+        if (playerInput.actions["1"].WasPressedThisFrame())
         {
             mascaras[0].SetActive(true);
             mascaras[1].SetActive(false);
@@ -63,7 +66,8 @@ public class MascaraCambio : MonoBehaviour
             playerController.mascara_index = 1;
             ActivaMascaraGUI(1);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2) && heCogidoLaMascara2)
+        // if (Input.GetKeyDown(KeyCode.Alpha2) && heCogidoLaMascara2)
+        if (playerInput.actions["2"].WasPressedThisFrame() && heCogidoLaMascara2)
         {
             mascaras[0].SetActive(false);
             mascaras[1].SetActive(true);
@@ -73,7 +77,8 @@ public class MascaraCambio : MonoBehaviour
             playerController.mascara_index = 2;
             ActivaMascaraGUI(2);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3) && heCogidoLaMascara3)
+        //if (Input.GetKeyDown(KeyCode.Alpha3) && heCogidoLaMascara3)
+        if (playerInput.actions["3"].WasPressedThisFrame() && heCogidoLaMascara3)
         {
             mascaras[0].SetActive(false);
             mascaras[1].SetActive(false);
@@ -83,7 +88,8 @@ public class MascaraCambio : MonoBehaviour
             playerController.mascara_index = 3;
             ActivaMascaraGUI(3);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha4) && heCogidoLaMascara4)
+        //if (Input.GetKeyDown(KeyCode.Alpha4) && heCogidoLaMascara4)
+        if (playerInput.actions["4"].WasPressedThisFrame() && heCogidoLaMascara4)
         {
             mascaras[0].SetActive(false);
             mascaras[1].SetActive(false);

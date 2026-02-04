@@ -554,6 +554,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4117936711492272436, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
   m_PrefabInstance: {fileID: 939060526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &182872848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182872846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/4
 --- !u!1001 &206866106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2157,6 +2170,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6679707663376510774, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6823108729244094077, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7401341993053109873, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2181,10 +2202,27 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7446789987486935407, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      propertyPath: m_Name
+      value: Panel-Mascaras
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2044965460618307389, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6679707663376510774, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1385102704}
+    - targetCorrespondingSourceObject: {fileID: 1901256177172931011, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2000489383}
+    - targetCorrespondingSourceObject: {fileID: 4062573924808553528, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1113188875}
+    - targetCorrespondingSourceObject: {fileID: 4117936711492272436, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 182872848}
   m_SourcePrefab: {fileID: 100100000, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
 --- !u!1 &942349046
 GameObject:
@@ -2803,6 +2841,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4062573924808553528, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
   m_PrefabInstance: {fileID: 939060526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1113188875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113188873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/3
 --- !u!1 &1126208050
 GameObject:
   m_ObjectHideFlags: 0
@@ -3383,6 +3434,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6679707663376510774, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
   m_PrefabInstance: {fileID: 939060526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1385102704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385102702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/1
 --- !u!1 &1386312792 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4648782391460411764, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
@@ -4213,6 +4277,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1901256177172931011, guid: 3eac224d60c301d4697a7d5826198ed7, type: 3}
   m_PrefabInstance: {fileID: 939060526}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2000489383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000489381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/2
 --- !u!1001 &2039848106
 PrefabInstance:
   m_ObjectHideFlags: 0
