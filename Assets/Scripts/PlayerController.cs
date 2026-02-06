@@ -12,10 +12,12 @@ public class PlayerController : MonoBehaviour
 
     public float stunTime; 
     private bool isStun;
-    
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        Application.targetFrameRate = -1; // Sin límite artificial
+        QualitySettings.vSyncCount = 0;   // Desactivar VSync por código
     }
 
     // Update is called once per frame
