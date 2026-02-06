@@ -1,26 +1,43 @@
 
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseSystem : MonoBehaviour
 {
     public GameObject PausePanel;
+    private PlayerInput playerInput;
+    private bool isPaused;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        OpenSettings();
+        playerInput = FindAnyObjectByType<PlayerInput>();
     }
-    public void OpenSettings()
+    private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+        if (playerInput.actions["Pause"].WasPressedThisFrame())
         {
-            PausePanel.SetActive(true);
-            Time.timeScale = 0f;
+            OnPause();
         }
+    }
+    // Update is called once per frame
+    public void OnPause()
+    {
+            if (isPaused)
+            {
+                ClosePannel();
+            }
+            else
+            {
+                PausePanel.SetActive(true);
+                Time.timeScale = 0f;
+                isPaused = true;
+            }
+        
     }
     public void ClosePannel()
     {
         PausePanel.SetActive(false);
         Time.timeScale = 1f;
+        isPaused = false;
     }
 }

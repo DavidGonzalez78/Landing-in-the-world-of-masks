@@ -9,6 +9,7 @@ public class PlayAudio : MonoBehaviour
     {
         // Nos suscribimos al evento definido en DeactiveThisObject
         DeactiveThisObject.OnObjectDeactivate += PlaySound;
+        audioSource.volume = 0;
     }
 
     private void OnDisable()
@@ -21,10 +22,8 @@ public class PlayAudio : MonoBehaviour
     {
         if (sonidoDeDestruccion != null)
         {
-            // PlayClipAtPoint crea un objeto temporal para reproducir el sonido.
-            // Esto permite que el sonido siga sonando aunque este objeto se desactive/destruya.
-            //AudioSource.PlayClipAtPoint(sonidoDeDestruccion, transform.position);
-            audioSource.Play();
+            audioSource.volume = 1;
+            //audioSource.Play();
         }
     }
 }
